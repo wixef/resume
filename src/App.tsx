@@ -158,7 +158,7 @@ export default function App() {
               initial={false}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.45, delay: 0.02 }}
-              className="pointer-events-none order-first mx-auto -mb-4 flex w-full max-w-[180px] justify-center sm:max-w-sm md:mb-0 md:max-w-none xl:order-none"
+              className="pointer-events-none order-first mx-auto -mb-4 hidden w-full max-w-[180px] justify-center sm:flex sm:max-w-sm md:mb-0 md:max-w-none xl:order-none"
             >
               <div className="relative">
                 <div className="absolute -inset-6 rounded-[28px] bg-gradient-to-b from-neonCyan/10 via-transparent to-neonPink/10 blur-2xl" />
