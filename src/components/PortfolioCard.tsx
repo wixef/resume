@@ -126,7 +126,7 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
           <div className="flex items-start justify-between gap-3">
             <div>
               <div className="text-xs text-white/55 md:text-base">{item.category}</div>
-              <div className="mt-1 font-display text-2xl font-semibold text-white/92 md:text-4xl">
+              <div className="mt-1 font-display text-xl font-semibold text-white/92 md:text-4xl">
                 {item.title}
               </div>
             </div>
@@ -134,31 +134,31 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
               <button
                 type="button"
                 onClick={onOpen}
-                className="glass-pill grid h-10 min-w-10 place-items-center rounded-2xl px-3 text-[11px] text-white/65 transition hover:bg-white/10 md:h-11 md:min-w-11 md:text-xs"
+                className="glass-pill hidden h-10 min-w-10 place-items-center rounded-2xl px-3 text-[11px] text-white/65 transition hover:bg-white/10 md:grid md:h-11 md:min-w-11 md:text-xs"
               >
                 video
               </button>
             ) : null}
           </div>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/74 md:mt-5 md:text-2xl">
+          <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-white/74 md:mt-5 md:text-2xl">
             {item.description}
           </p>
           <div className="mt-3 text-xs font-medium tracking-wide text-neonCyan/85 md:text-base">
             Дизайн сайта выполнен мной.
           </div>
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-wrap gap-2">
             {item.stack.slice(0, 4).map((s) => (
               <span
                 key={s}
-                className="glass-pill rounded-full px-3 py-1.5 text-xs text-white/72 md:px-3.5 md:py-2 md:text-sm"
+                className="glass-pill rounded-full px-2.5 py-1.5 text-[11px] text-white/72 md:px-3.5 md:py-2 md:text-sm"
               >
                 {s}
               </span>
             ))}
           </div>
 
-          <div className="mt-6 flex flex-col gap-4 md:mt-8 md:flex-row md:flex-wrap md:items-center md:justify-between">
-            <div className="text-sm text-white/45 md:text-base">{subtitle}</div>
+          <div className="mt-5 flex flex-col gap-3 md:mt-8 md:flex-row md:flex-wrap md:items-center md:justify-between">
+            <div className="hidden text-sm text-white/45 md:block md:text-base">{subtitle}</div>
             <div className="grid grid-cols-1 gap-3 sm:flex sm:flex-wrap">
               <button
                 type="button"
