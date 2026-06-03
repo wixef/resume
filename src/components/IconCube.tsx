@@ -30,6 +30,8 @@ export default function IconCube({ faces = defaultFaces }: Props) {
     if (!wrap || !cube) return;
 
     let raf = 0;
+    const baseX = -16;
+    const baseY = 28;
     let tx = 0;
     let ty = 0;
     let cx = 0;
@@ -46,7 +48,7 @@ export default function IconCube({ faces = defaultFaces }: Props) {
     const tick = () => {
       cx += (tx - cx) * 0.10;
       cy += (ty - cy) * 0.10;
-      cube.style.transform = `rotateX(${cx.toFixed(2)}deg) rotateY(${cy.toFixed(
+      cube.style.transform = `rotateX(${(baseX + cx).toFixed(2)}deg) rotateY(${(baseY + cy).toFixed(
         2
       )}deg)`;
       raf = requestAnimationFrame(tick);
