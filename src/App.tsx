@@ -158,7 +158,7 @@ export default function App() {
               initial={false}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.45, delay: 0.02 }}
-              className="order-first mx-auto flex w-full max-w-sm justify-center md:max-w-none xl:order-none"
+              className="pointer-events-none order-first mx-auto -mb-4 flex w-full max-w-[180px] justify-center sm:max-w-sm md:mb-0 md:max-w-none xl:order-none"
             >
               <div className="relative">
                 <div className="absolute -inset-6 rounded-[28px] bg-gradient-to-b from-neonCyan/10 via-transparent to-neonPink/10 blur-2xl" />
@@ -248,33 +248,35 @@ export default function App() {
             onChange={setViewerIndex}
           />
 
-          <div className="mt-8 flex flex-col gap-4 md:flex-row md:flex-wrap md:items-center md:justify-between">
-            <div className="text-sm text-white/55 md:text-base">
-              Показано: <span className="text-white/80">{pageItems.length}</span>{" "}
-              из <span className="text-white/80">{filtered.length}</span>
-            </div>
-            <div className="flex items-center gap-2 self-start md:self-auto">
-              <button
-                type="button"
-                onClick={() => setPage((p) => Math.max(1, p - 1))}
-                disabled={page <= 1}
-                className="glass-pill rounded-3xl px-5 py-3 text-base text-white/75 transition enabled:hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
-              >
-                ←
-              </button>
-              <div className="glass-panel rounded-3xl px-5 py-3 text-base text-white/75">
-                {page} / {pages}
+          {pages > 1 ? (
+            <div className="mt-8 flex flex-col gap-4 md:flex-row md:flex-wrap md:items-center md:justify-between">
+              <div className="text-sm text-white/55 md:text-base">
+                Показано: <span className="text-white/80">{pageItems.length}</span>{" "}
+                из <span className="text-white/80">{filtered.length}</span>
               </div>
-              <button
-                type="button"
-                onClick={() => setPage((p) => Math.min(pages, p + 1))}
-                disabled={page >= pages}
-                className="glass-pill rounded-3xl px-5 py-3 text-base text-white/75 transition enabled:hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
-              >
-                →
-              </button>
+              <div className="flex items-center gap-2 self-start md:self-auto">
+                <button
+                  type="button"
+                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  disabled={page <= 1}
+                  className="glass-pill rounded-3xl px-5 py-3 text-base text-white/75 transition enabled:hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  ←
+                </button>
+                <div className="glass-panel rounded-3xl px-5 py-3 text-base text-white/75">
+                  {page} / {pages}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setPage((p) => Math.min(pages, p + 1))}
+                  disabled={page >= pages}
+                  className="glass-pill rounded-3xl px-5 py-3 text-base text-white/75 transition enabled:hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  →
+                </button>
+              </div>
             </div>
-          </div>
+          ) : null}
         </Section>
 
         {/* PET */}

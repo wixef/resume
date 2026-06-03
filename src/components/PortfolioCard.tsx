@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import type { PortfolioItem } from "@/data/portfolio";
 import { cn } from "@/lib/cn";
@@ -14,6 +14,7 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
   const reverse = index % 2 === 1;
   const mediaRef = useRef<HTMLDivElement | null>(null);
   const previewVideoRef = useRef<HTMLVideoElement | null>(null);
+  const [allowPreviewVideo, setAllowPreviewVideo] = useState(false);
   const mediaInView = useInView(mediaRef, {
     once: false,
     amount: 0.35,
@@ -21,8 +22,21 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
   });
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    const media = window.matchMedia("(pointer: coarse), (max-width: 820px)");
+    const update = () => setAllowPreviewVideo(!media.matches);
+    update();
+    media.addEventListener?.("change", update);
+    return () => media.removeEventListener?.("change", update);
+  }, []);
+
+  useEffect(() => {
     const video = previewVideoRef.current;
     if (!video) return;
+    if (!allowPreviewVideo) {
+      video.pause();
+      return;
+    }
 
     if (mediaInView) {
       void video.play().catch(() => {});
@@ -30,7 +44,7 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
     }
 
     video.pause();
-  }, [mediaInView]);
+  }, [allowPreviewVideo, mediaInView]);
 
   return (
     <motion.div
@@ -74,7 +88,7 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
                   fullscreen
                 </span>
               </div>
-              {item.video && (mediaInView || !item.poster) ? (
+              {item.video && allowPreviewVideo && (mediaInView || !item.poster) ? (
                 <video
                   ref={previewVideoRef}
                   className="pointer-events-none aspect-[16/10] h-full min-h-[13rem] w-full object-cover md:min-h-[18rem] xl:min-h-[31rem]"
@@ -83,7 +97,7 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
                   muted
                   loop
                   playsInline
-                  preload="metadata"
+                  preload="none"
                 />
               ) : item.poster ? (
                 <img

@@ -189,7 +189,7 @@ export default function PortfolioViewer({ items, index, onClose, onChange }: Pro
                 autoPlay
                 muted={isMuted}
                 playsInline
-                preload="auto"
+                preload="metadata"
                 onLoadedMetadata={(event) => setDuration(event.currentTarget.duration || 0)}
                 onCanPlay={(event) => {
                   void event.currentTarget.play().catch(() => {

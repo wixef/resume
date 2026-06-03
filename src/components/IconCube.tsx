@@ -64,12 +64,12 @@ export default function IconCube({ faces = defaultFaces }: Props) {
   return (
     <div
       ref={wrapRef}
-      className="relative h-56 w-56 select-none animate-floaty [perspective:1200px] sm:h-72 sm:w-72 md:h-[22rem] md:w-[22rem]"
+      className="relative h-44 w-44 select-none animate-floaty [perspective:1200px] sm:h-72 sm:w-72 md:h-[22rem] md:w-[22rem]"
     >
       <div className="absolute inset-0 rounded-3xl bg-white/5 blur-2xl" />
       <div
         ref={cubeRef}
-        className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 [transform-style:preserve-3d] transition-transform duration-200 ease-out sm:h-52 sm:w-52 md:h-60 md:w-60"
+        className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 [transform-style:preserve-3d] transition-transform duration-200 ease-out sm:h-52 sm:w-52 md:h-60 md:w-60"
       >
         {cssFaces.map((f, i) => {
           const accent =
@@ -81,12 +81,12 @@ export default function IconCube({ faces = defaultFaces }: Props) {
             "absolute inset-0 grid place-items-center rounded-[28px] border border-white/10 bg-black/35 text-base font-semibold tracking-wide backdrop-blur-md";
 
           const faceTransform = [
-            "translateZ(74px)",
-            "rotateY(180deg) translateZ(74px)",
-            "rotateY(90deg) translateZ(74px)",
-            "rotateY(-90deg) translateZ(74px)",
-            "rotateX(90deg) translateZ(74px)",
-            "rotateX(-90deg) translateZ(74px)"
+            "translateZ(58px)",
+            "rotateY(180deg) translateZ(58px)",
+            "rotateY(90deg) translateZ(58px)",
+            "rotateY(-90deg) translateZ(58px)",
+            "rotateX(90deg) translateZ(58px)",
+            "rotateX(-90deg) translateZ(58px)"
           ][i];
 
           return (
@@ -104,7 +104,7 @@ export default function IconCube({ faces = defaultFaces }: Props) {
             >
               <div className="grid place-items-center gap-2">
                 <div
-                  className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-white/5 px-2 text-xs sm:h-14 sm:w-14 sm:text-sm"
+                  className="grid h-9 w-9 place-items-center rounded-2xl border border-white/10 bg-white/5 px-2 text-[10px] sm:h-14 sm:w-14 sm:text-sm"
                   style={{
                     boxShadow: `0 0 0 1px ${accent.replace(
                       "1)",
@@ -114,7 +114,7 @@ export default function IconCube({ faces = defaultFaces }: Props) {
                 >
                   {f.label}
                 </div>
-                <div className="text-xs text-white/55 sm:text-sm">icon</div>
+                <div className="text-[10px] text-white/55 sm:text-sm">icon</div>
               </div>
             </div>
           );
