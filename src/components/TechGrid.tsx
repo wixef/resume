@@ -7,7 +7,7 @@ type Props = {
 
 export default function TechGrid({ items }: Props) {
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4">
       {items.map((t) => {
         const glow =
           t.accent === "cyan"
@@ -18,7 +18,7 @@ export default function TechGrid({ items }: Props) {
         return (
           <motion.div
             key={t.name}
-            className="glass-panel group rounded-[28px] p-5 transition hover:shadow-neon"
+            className="glass-panel group rounded-[22px] p-4 transition hover:shadow-neon md:rounded-[28px] md:p-5"
             initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
@@ -38,15 +38,15 @@ export default function TechGrid({ items }: Props) {
 
             <div className="relative flex items-center gap-3">
               <div
-                className={`grid h-12 w-12 place-items-center rounded-2xl border border-white/10 bg-black/30 text-sm ${glow}`}
+                className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-white/10 bg-black/30 text-sm md:h-12 md:w-12 ${glow}`}
               >
                 <span className={`font-display text-base ${accentText}`}>{t.short}</span>
               </div>
               <div>
-                <div className="font-display text-base font-semibold text-white/90 md:text-lg">
+                <div className="font-display text-[15px] font-semibold text-white/90 md:text-lg">
                   {t.name}
                 </div>
-                <div className="mt-1 max-w-[18rem] text-sm leading-relaxed text-white/52">
+                <div className="mt-1 max-w-[18rem] text-xs leading-relaxed text-white/52 md:text-sm">
                   {t.note}
                 </div>
               </div>

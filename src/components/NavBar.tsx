@@ -45,10 +45,10 @@ export default function NavBar() {
 
   return (
     <div className="fixed left-0 top-0 z-50 w-full">
-      <div className="px-5 pt-4 md:px-8 xl:px-14">
+      <div className="px-3 pt-3 md:px-8 md:pt-4 xl:px-14">
         <div
           className={cn(
-            "glass-panel glass-header rounded-[30px] px-5 py-4 md:px-7",
+            "glass-panel glass-header rounded-[24px] px-3 py-3 md:rounded-[30px] md:px-7 md:py-4",
             "border-transparent",
             scrolled ? "glass-header-scrolled" : ""
           )}
@@ -56,19 +56,19 @@ export default function NavBar() {
           <div className="flex items-center justify-between gap-4">
         <button
           type="button"
-          className="group flex items-center gap-2 text-left"
+          className="group flex min-w-0 items-center gap-2 text-left"
           onClick={() => scrollToId("hero")}
         >
-          <span className="glass-pill grid h-9 w-9 place-items-center rounded-xl">
+          <span className="glass-pill grid h-9 w-9 shrink-0 place-items-center rounded-xl">
             <span className="font-display text-sm tracking-wide text-white/85">
               O
             </span>
           </span>
-          <span className="hidden sm:block">
-            <span className="block font-display text-sm font-semibold text-white/90">
+          <span className="min-w-0">
+            <span className="block truncate font-display text-sm font-semibold text-white/90">
               {config.person.name}
             </span>
-            <span className="block text-xs text-white/55">frontend</span>
+            <span className="block truncate text-xs text-white/55">frontend</span>
           </span>
         </button>
 
@@ -95,7 +95,7 @@ export default function NavBar() {
 
         <button
           type="button"
-          className="glass-pill relative grid h-10 w-10 place-items-center rounded-xl md:hidden"
+          className="glass-pill relative grid h-10 w-10 shrink-0 place-items-center rounded-xl md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Открыть меню"
         >
@@ -133,7 +133,7 @@ export default function NavBar() {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="px-5 pb-4 md:px-8 xl:px-14">
+            <div className="px-3 pb-3 md:px-8 xl:px-14">
               <div className="glass-panel rounded-2xl p-3">
                 <div className="grid gap-1">
                   {nav.map((it) => (

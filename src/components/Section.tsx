@@ -18,26 +18,26 @@ export default function Section({ id, title, subtitle, children, variant }: Prop
   });
 
   return (
-    <section id={id} className="w-full px-5 py-10 md:px-8 md:py-12 xl:px-14">
+    <section id={id} className="w-full px-3 py-6 md:px-8 md:py-12 xl:px-14">
       <div
         ref={shellRef}
-        className={`section-shell ${variant ?? ""} relative overflow-hidden rounded-[34px] px-5 py-14 md:px-8 md:py-16 xl:px-10`}
+        className={`section-shell ${variant ?? ""} relative overflow-hidden rounded-[26px] px-4 py-10 md:rounded-[34px] md:px-8 md:py-16 xl:px-10`}
       >
         <motion.div
-          className="mb-10"
+          className="mb-7 md:mb-10"
           style={{ willChange: "transform, opacity" }}
           initial={{ opacity: 0, y: 26 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 26 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
           <div>
-            <h2 className="font-display text-4xl font-semibold tracking-tight text-white md:text-5xl">
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-white md:text-5xl">
               <span className="glitch" data-text={title}>
                 {title}
               </span>
             </h2>
             {subtitle ? (
-              <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/65 md:text-lg">
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/65 md:text-lg">
                 {subtitle}
               </p>
             ) : null}

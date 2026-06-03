@@ -63,13 +63,13 @@ export default function App() {
         {/* HERO */}
         <section
           id="hero"
-          className="w-full px-5 pb-8 pt-24 md:px-8 md:pb-10 md:pt-28 xl:px-14"
+          className="w-full px-3 pb-6 pt-20 md:px-8 md:pb-10 md:pt-28 xl:px-14"
         >
           <div
-            className="hero-shell flex w-full flex-col justify-start px-5 py-10 md:px-8 md:py-12 xl:px-10"
-            style={{ minHeight: "calc(100svh - 6rem)" }}
+            className="hero-shell flex w-full flex-col justify-start px-4 py-7 md:px-8 md:py-12 xl:px-10"
+            style={{ minHeight: "calc(100svh - 5.25rem)" }}
           >
-          <div className="grid items-start gap-12 xl:grid-cols-[1.2fr_0.8fr]">
+          <div className="grid items-start gap-8 xl:grid-cols-[1.2fr_0.8fr] xl:gap-12">
             <motion.div
               initial={false}
               animate={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ export default function App() {
                 <span className="text-white/55">2026</span>
               </div>
 
-              <h1 className="mt-7 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-white md:text-7xl">
+              <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight text-white md:mt-7 md:text-7xl">
                 <span
                   className="glitch glitch-static"
                   data-text="Олег. 18 лет. 100+ проектов. 4 года."
@@ -91,7 +91,7 @@ export default function App() {
                 </span>
               </h1>
 
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl">
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:mt-5 md:text-xl">
                 Frontend / backend разработчик. Делаю лендинги, интернет-магазины,
                 админ-панели, Telegram-ботов и серверную часть под проекты.
                 <span className="text-white/45">
@@ -100,27 +100,27 @@ export default function App() {
                 </span>
               </p>
 
-              <div className="mt-6 flex flex-wrap items-center gap-4">
-                <div className="glass-panel rounded-[28px] px-5 py-4">
+              <div className="mt-5 grid gap-3 sm:flex sm:flex-wrap sm:items-center sm:gap-4">
+                <div className="glass-panel rounded-[24px] px-4 py-3 md:rounded-[28px] md:px-5 md:py-4">
                   <div className="text-sm text-white/50">Я делаю</div>
-                  <div className="mt-2 font-display text-2xl text-white/90 md:text-3xl">
+                  <div className="mt-2 font-display text-xl text-white/90 md:text-3xl">
                     <TypedText words={WORDS} />
                   </div>
                 </div>
 
-                <div className="glass-panel rounded-[28px] px-5 py-4">
+                <div className="glass-panel rounded-[24px] px-4 py-3 md:rounded-[28px] md:px-5 md:py-4">
                   <div className="text-sm text-white/50">Проектов</div>
-                  <div className="mt-2 font-display text-2xl text-white/90 md:text-3xl">
+                  <div className="mt-2 font-display text-xl text-white/90 md:text-3xl">
                     <Counter to={100} suffix="+" />
                   </div>
                 </div>
               </div>
 
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-5 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap">
                 <button
                   type="button"
                   onClick={() => scrollToId("portfolio")}
-                  className="glass-pill rounded-3xl px-6 py-4 text-base text-white/85 transition hover:bg-white/10"
+                  className="glass-pill rounded-3xl px-6 py-3.5 text-base text-white/85 transition hover:bg-white/10"
                 >
                   Портфолио
                 </button>
@@ -128,20 +128,20 @@ export default function App() {
                   href={config.links.telegram}
                   target="_blank"
                   rel="noreferrer"
-                  className="glass-pill rounded-3xl px-6 py-4 text-base text-white/85 transition hover:bg-white/10"
+                  className="glass-pill rounded-3xl px-6 py-3.5 text-base text-white/85 transition hover:bg-white/10"
                 >
                   Telegram
                 </a>
                 <button
                   type="button"
                   onClick={() => scrollToId("contacts")}
-                  className="glass-pill rounded-3xl px-6 py-4 text-base text-white/75 transition hover:bg-white/10"
+                  className="glass-pill rounded-3xl px-6 py-3.5 text-base text-white/75 transition hover:bg-white/10"
                 >
                   Написать
                 </button>
               </div>
 
-              <div className="mt-7 max-w-xl text-lg leading-relaxed text-white/70 md:text-xl">
+              <div className="mt-6 max-w-xl text-base leading-relaxed text-white/70 md:text-xl">
                 <div className="flex flex-wrap gap-x-6 gap-y-2">
                   <span className="text-white/85">Лендинги</span>
                   <span className="text-white/35">/</span>
@@ -158,7 +158,7 @@ export default function App() {
               initial={false}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.45, delay: 0.02 }}
-              className="mx-auto flex w-full max-w-md justify-center md:max-w-none"
+              className="order-first mx-auto flex w-full max-w-sm justify-center md:max-w-none xl:order-none"
             >
               <div className="relative">
                 <div className="absolute -inset-6 rounded-[28px] bg-gradient-to-b from-neonCyan/10 via-transparent to-neonPink/10 blur-2xl" />
@@ -248,12 +248,12 @@ export default function App() {
             onChange={setViewerIndex}
           />
 
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
-            <div className="text-base text-white/55">
+          <div className="mt-8 flex flex-col gap-4 md:flex-row md:flex-wrap md:items-center md:justify-between">
+            <div className="text-sm text-white/55 md:text-base">
               Показано: <span className="text-white/80">{pageItems.length}</span>{" "}
               из <span className="text-white/80">{filtered.length}</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 self-start md:self-auto">
               <button
                 type="button"
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
@@ -345,7 +345,7 @@ export default function App() {
                   accent: "cyan"
                 }
               ].map((c) => (
-                <div key={c.title} className="glass-panel relative rounded-[32px] p-8 transition hover:shadow-neon">
+                <div key={c.title} className="glass-panel relative rounded-[24px] p-5 transition hover:shadow-neon md:rounded-[32px] md:p-8">
                   <div
                     className="pointer-events-none absolute -left-16 -top-16 h-40 w-40 rounded-full blur-2xl"
                     style={{
@@ -358,7 +358,7 @@ export default function App() {
                   <div className="relative flex items-start justify-between gap-4">
                     <div>
                       <div className="text-sm text-white/55">{c.title}</div>
-                      <div className="mt-2 break-all font-display text-xl font-semibold text-white/90 md:text-2xl">
+                      <div className="mt-2 break-all font-display text-lg font-semibold text-white/90 md:text-2xl">
                         {c.value}
                       </div>
                     </div>
@@ -367,14 +367,14 @@ export default function App() {
                         href={c.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="glass-pill rounded-2xl px-4 py-3 text-sm text-white/80 hover:bg-white/10"
+                        className="glass-pill rounded-2xl px-4 py-3 text-xs text-white/80 hover:bg-white/10 md:text-sm"
                       >
                         {c.action} →
                       </a>
                     ) : (
                       <button
                         type="button"
-                        className="glass-pill rounded-2xl px-4 py-3 text-sm text-white/80 hover:bg-white/10"
+                        className="glass-pill rounded-2xl px-4 py-3 text-xs text-white/80 hover:bg-white/10 md:text-sm"
                         onClick={c.onClick}
                       >
                         {c.action}
@@ -385,14 +385,14 @@ export default function App() {
               ))}
             </div>
 
-            <div className="glass-panel relative rounded-[32px] p-8 md:pb-10">
+            <div className="glass-panel relative rounded-[24px] p-5 md:rounded-[32px] md:p-8 md:pb-10">
               <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-neonPink/10 blur-2xl" />
               <div className="relative">
-                <div className="font-display text-2xl font-semibold text-white/90 md:text-3xl">
+                <div className="font-display text-xl font-semibold text-white/90 md:text-3xl">
                   Форма обратной связи
                 </div>
                 <form
-                  className="mt-6 grid gap-4 pb-2"
+                  className="mt-5 grid gap-4 pb-2 md:mt-6"
                   onSubmit={async (e) => {
                     e.preventDefault();
                     const form = e.currentTarget;
@@ -459,7 +459,7 @@ export default function App() {
                     <input
                       name="name"
                       placeholder="Как к вам обращаться?"
-                      className="glass-soft rounded-3xl border border-white/10 px-5 py-4 text-base text-white/85 outline-none ring-0 transition focus:border-white/20 focus:shadow-[0_0_0_1px_rgba(0,243,255,0.22),0_0_26px_rgba(0,243,255,0.10)]"
+                      className="glass-soft rounded-3xl border border-white/10 px-4 py-3.5 text-sm text-white/85 outline-none ring-0 transition focus:border-white/20 focus:shadow-[0_0_0_1px_rgba(0,243,255,0.22),0_0_26px_rgba(0,243,255,0.10)] md:px-5 md:py-4 md:text-base"
                     />
                   </label>
                   <label className="grid gap-1">
@@ -468,13 +468,13 @@ export default function App() {
                       name="message"
                       placeholder="Напишите задачу / сроки / бюджет…"
                       rows={5}
-                      className="glass-soft resize-none rounded-3xl border border-white/10 px-5 py-4 text-base text-white/85 outline-none transition focus:border-white/20 focus:shadow-[0_0_0_1px_rgba(255,0,229,0.18),0_0_26px_rgba(255,0,229,0.10)]"
+                      className="glass-soft resize-none rounded-3xl border border-white/10 px-4 py-3.5 text-sm text-white/85 outline-none transition focus:border-white/20 focus:shadow-[0_0_0_1px_rgba(255,0,229,0.18),0_0_26px_rgba(255,0,229,0.10)] md:px-5 md:py-4 md:text-base"
                     />
                   </label>
                   <button
                     type="submit"
                     disabled={sending}
-                    className="glass-pill rounded-3xl px-6 py-4 text-base text-white/85 transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-60"
+                    className="glass-pill rounded-3xl px-6 py-3.5 text-sm text-white/85 transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-60 md:py-4 md:text-base"
                   >
                     {sending ? "Отправляю..." : "Отправить"}
                   </button>
@@ -485,8 +485,8 @@ export default function App() {
         </Section>
       </main>
 
-      <footer className="w-full px-5 pb-14 pt-6 md:px-8 md:pt-8 xl:px-14">
-        <div className="glass-panel rounded-[28px] p-5 text-center text-sm text-white/55">
+      <footer className="w-full px-3 pb-8 pt-4 md:px-8 md:pb-14 md:pt-8 xl:px-14">
+        <div className="glass-panel rounded-[22px] p-4 text-center text-xs text-white/55 md:rounded-[28px] md:p-5 md:text-sm">
           <span className="font-display text-white/75">{config.person.name}</span>{" "}
           — {config.person.title}. Сделано на React + Tailwind + Framer Motion.
         </div>

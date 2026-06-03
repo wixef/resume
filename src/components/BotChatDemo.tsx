@@ -238,13 +238,13 @@ export default function BotChatDemo() {
   }, [messages]);
 
   return (
-    <div className="grid gap-6 xl:grid-cols-[minmax(240px,1fr)_minmax(0,420px)_minmax(240px,1fr)] xl:items-center">
+    <div className="grid gap-4 md:gap-6 xl:grid-cols-[minmax(240px,1fr)_minmax(0,420px)_minmax(240px,1fr)] xl:items-center">
       <div className="order-2 grid gap-4 xl:order-1">
-        <div className="glass-panel rounded-[30px] p-7">
-          <div className="font-display text-2xl font-semibold text-white/92">
+        <div className="glass-panel rounded-[24px] p-5 md:rounded-[30px] md:p-7">
+          <div className="font-display text-xl font-semibold text-white/92 md:text-2xl">
             Сценарий работы
           </div>
-          <ul className="mt-4 grid gap-3 text-lg text-white/72">
+          <ul className="mt-3 grid gap-2 text-sm text-white/72 md:mt-4 md:gap-3 md:text-lg">
             <li>Сначала пробный доступ и покупка, потом уже личные разделы</li>
             <li>Автоматический сценарий: выбор → оплата → подтверждение → активация</li>
             <li>Личный кабинет прямо в чате: ключ, подписка, продление, инструкция</li>
@@ -252,11 +252,11 @@ export default function BotChatDemo() {
           </ul>
         </div>
 
-        <div className="glass-panel rounded-[30px] p-7">
-          <div className="font-display text-2xl font-semibold text-white/92">
+        <div className="glass-panel rounded-[24px] p-5 md:rounded-[30px] md:p-7">
+          <div className="font-display text-xl font-semibold text-white/92 md:text-2xl">
             Что внутри
           </div>
-          <ul className="mt-4 grid gap-3 text-lg text-white/72">
+          <ul className="mt-3 grid gap-2 text-sm text-white/72 md:mt-4 md:gap-3 md:text-lg">
             <li>Node.js + Telegram Bot API</li>
             <li>Автоматизация сценариев и статусов</li>
             <li>Подключение оплаты и выдача доступа без ручных действий</li>
@@ -265,14 +265,14 @@ export default function BotChatDemo() {
         </div>
       </div>
 
-      <div className="order-1 mx-auto w-full max-w-[390px] xl:order-2">
+      <div className="order-1 mx-auto w-full max-w-[340px] sm:max-w-[390px] xl:order-2">
         <div className="relative">
           <div className="pointer-events-none absolute -inset-4 rounded-[40px] bg-[radial-gradient(circle_at_50%_20%,rgba(0,243,255,0.10),transparent_40%),radial-gradient(circle_at_50%_85%,rgba(255,0,229,0.08),transparent_42%)] blur-2xl" />
-        <div className="relative flex h-[min(74svh,760px)] min-h-[560px] flex-col overflow-hidden rounded-[34px] border border-white/10 bg-[#17212b] shadow-[0_26px_70px_rgba(0,0,0,0.42)]">
-          <div className="border-b border-white/6 bg-[#223242] px-4 py-2">
+        <div className="relative flex h-[min(68svh,640px)] min-h-[500px] flex-col overflow-hidden rounded-[28px] border border-white/10 bg-[#17212b] shadow-[0_26px_70px_rgba(0,0,0,0.42)] sm:h-[min(74svh,760px)] sm:min-h-[560px] sm:rounded-[34px]">
+          <div className="border-b border-white/6 bg-[#223242] px-3 py-2 sm:px-4">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="grid h-10 w-10 place-items-center rounded-full bg-[#2b5278] text-sm font-semibold text-white shadow-[0_6px_18px_rgba(0,0,0,0.16)]">
+                <div className="grid h-9 w-9 place-items-center rounded-full bg-[#2b5278] text-sm font-semibold text-white shadow-[0_6px_18px_rgba(0,0,0,0.16)] sm:h-10 sm:w-10">
                   OA
                 </div>
                 <div>
@@ -284,21 +284,21 @@ export default function BotChatDemo() {
                 href={config.links.telegramBot}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-white/10 bg-white/6 px-3 py-1.5 text-[11px] text-white/70 transition hover:bg-white/10"
+                className="rounded-full border border-white/10 bg-white/6 px-3 py-1.5 text-[10px] text-white/70 transition hover:bg-white/10 sm:text-[11px]"
               >
                 Telegram
               </a>
             </div>
           </div>
 
-          <div className="flex min-h-0 flex-1 flex-col bg-[#0f1720] p-3">
+          <div className="flex min-h-0 flex-1 flex-col bg-[#0f1720] p-2.5 sm:p-3">
             <div className="overflow-hidden rounded-[24px] border border-white/8 bg-black">
-              <div className="flex w-full aspect-[16/9] max-h-[8.5rem] items-center justify-center bg-[radial-gradient(circle_at_top,rgba(78,138,255,0.28),transparent_42%),linear-gradient(180deg,#132130_0%,#070b10_100%)]">
+              <div className="flex w-full aspect-[16/9] max-h-[7rem] items-center justify-center bg-[radial-gradient(circle_at_top,rgba(78,138,255,0.28),transparent_42%),linear-gradient(180deg,#132130_0%,#070b10_100%)] sm:max-h-[8.5rem]">
                 <div className="text-center">
-                  <div className="text-3xl font-black uppercase tracking-[-0.05em] text-white drop-shadow-[0_0_18px_rgba(78,138,255,0.35)] md:text-4xl">
+                  <div className="text-2xl font-black uppercase tracking-[-0.05em] text-white drop-shadow-[0_0_18px_rgba(78,138,255,0.35)] md:text-4xl">
                     OSK ACCESS
                   </div>
-                  <div className="mt-2 text-sm font-semibold uppercase tracking-[0.4em] text-[#7ec8ff] md:text-base">
+                  <div className="mt-1 text-xs font-semibold uppercase tracking-[0.35em] text-[#7ec8ff] md:mt-2 md:text-base">
                     bot
                   </div>
                 </div>
@@ -318,11 +318,11 @@ export default function BotChatDemo() {
                       transition={{ duration: 0.2 }}
                       className={
                         message.from === "user"
-                        ? "ml-auto max-w-[88%] rounded-[18px] rounded-br-md bg-[#2b5278] px-3.5 py-2.5 text-white shadow-[0_8px_18px_rgba(0,0,0,0.14)]"
-                        : "mr-auto max-w-[88%] rounded-[18px] rounded-bl-md bg-[#1f2c39] px-3.5 py-2.5 text-white shadow-[0_8px_18px_rgba(0,0,0,0.14)]"
+                        ? "ml-auto max-w-[88%] rounded-[18px] rounded-br-md bg-[#2b5278] px-3 py-2 text-white shadow-[0_8px_18px_rgba(0,0,0,0.14)] sm:px-3.5 sm:py-2.5"
+                        : "mr-auto max-w-[88%] rounded-[18px] rounded-bl-md bg-[#1f2c39] px-3 py-2 text-white shadow-[0_8px_18px_rgba(0,0,0,0.14)] sm:px-3.5 sm:py-2.5"
                       }
                     >
-                      <div className="whitespace-pre-line text-[14px] leading-relaxed text-white/92">
+                      <div className="whitespace-pre-line text-[13px] leading-relaxed text-white/92 sm:text-[14px]">
                         {message.accent === "violet" ? (
                           <span className="inline-block rounded-xl bg-[#5b478f] px-3 py-2 text-white">
                             {message.text}
@@ -331,7 +331,7 @@ export default function BotChatDemo() {
                           message.text
                         )}
                       </div>
-                      <div className="mt-2 text-right text-[11px] text-white/40">{message.time}</div>
+                      <div className="mt-1.5 text-right text-[10px] text-white/40 sm:mt-2 sm:text-[11px]">{message.time}</div>
                     </motion.div>
                   ))}
                 </AnimatePresence>
@@ -345,7 +345,7 @@ export default function BotChatDemo() {
                     key={button.id}
                     type="button"
                     onClick={button.onClick}
-                    className="rounded-[14px] border border-white/6 bg-[#223242] px-4 py-2.5 text-center text-[15px] font-semibold text-white/94 transition hover:bg-[#284056]"
+                    className="rounded-[14px] border border-white/6 bg-[#223242] px-4 py-2 text-center text-[14px] font-semibold text-white/94 transition hover:bg-[#284056] sm:py-2.5 sm:text-[15px]"
                   >
                     {button.label}
                   </button>
@@ -358,11 +358,11 @@ export default function BotChatDemo() {
       </div>
 
       <div className="order-3">
-        <div className="glass-panel rounded-[30px] p-7">
-          <div className="font-display text-2xl font-semibold text-white/92">
+        <div className="glass-panel rounded-[24px] p-5 md:rounded-[30px] md:p-7">
+          <div className="font-display text-xl font-semibold text-white/92 md:text-2xl">
             Технологически
           </div>
-          <ul className="mt-4 grid gap-3 text-lg text-white/72">
+          <ul className="mt-3 grid gap-2 text-sm text-white/72 md:mt-4 md:gap-3 md:text-lg">
             <li>Backend-логика, статусы, меню и сценарии выдачи</li>
             <li>Интеграция оплаты и автоматическое подтверждение действий</li>
             <li>Управление из одного чата без лишних ручных шагов</li>

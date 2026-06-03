@@ -30,7 +30,13 @@ body {
   background: linear-gradient(180deg, var(--bg0), var(--bg1));
   color: rgba(255, 255, 255, 0.9);
   overflow-x: hidden;
-  font-size: 18px;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
 }
 
 main {
@@ -398,4 +404,20 @@ html.viewer-open .custom-cursor-dot {
 
 .custom-cursor-ring {
   transition: transform 140ms ease-out, opacity 140ms ease-out;
+}
+
+@media (max-width: 767px) {
+  html {
+    scroll-padding-top: 76px;
+  }
+
+  .glass-header {
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+  }
+
+  .section-shell::before,
+  .hero-shell::before {
+    opacity: 0.52;
+  }
 }
