@@ -17,6 +17,8 @@ export type PortfolioItem = {
   poster?: string;
 };
 
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+
 export const portfolioCategories: PortfolioCategory[] = [
   "Все",
   "Лендинги",
@@ -34,8 +36,8 @@ export const portfolioItems: PortfolioItem[] = [
       "Сайт блогера-миллионника Максима Анубиса с огромной аудиторией. Профиль Likee: 1.26 миллиона подписчиков.",
     stack: ["Landing", "Адаптив", "Наш дизайн"],
     href: "https://kislorodmedia.ru/",
-    video: "/works/kislorod.mp4",
-    poster: "/works/posters/kislorod.mp4.png"
+    video: asset("/works/kislorod.mp4"),
+    poster: asset("/works/posters/kislorod.mp4.png")
   },
   {
     id: "sib-lombard",
@@ -45,8 +47,8 @@ export const portfolioItems: PortfolioItem[] = [
       "Одностраничный сайт ломбарда с адаптивным дизайном и калькулятором расчёта залога.",
     stack: ["Landing", "Калькулятор", "Адаптив"],
     href: "https://sib-lombard.ru",
-    video: "/works/sib-lombard.mp4",
-    poster: "/works/posters/sib-lombard.mp4.png"
+    video: asset("/works/sib-lombard.mp4"),
+    poster: asset("/works/posters/sib-lombard.mp4.png")
   },
   {
     id: "billposter",
@@ -56,8 +58,8 @@ export const portfolioItems: PortfolioItem[] = [
       "Сайт сервиса по расклейке объявлений и размещению рекламы со сложным калькулятором тарифов на расклейку.",
     stack: ["Landing", "Калькулятор", "UI"],
     href: "https://bill-poster.ru",
-    video: "/works/billposter.mp4",
-    poster: "/works/posters/billposter.mp4.png"
+    video: asset("/works/billposter.mp4"),
+    poster: asset("/works/posters/billposter.mp4.png")
   },
   {
     id: "elisheba",
@@ -66,7 +68,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Интернет-магазин ELISHEBA с акцентом на каталог, карточки товара и уверенную подачу на мобильных устройствах.",
     stack: ["E-commerce", "Каталог", "Mobile First"],
-    video: "/works/elisheba.mp4"
+    video: asset("/works/elisheba.mp4")
   },
   {
     id: "clothes-custom",
@@ -75,8 +77,8 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Сайт для заказа одежды с онлайн-конструктором принта для футболок.",
     stack: ["Каталог", "Конструктор", "UI"],
-    video: "/works/clothes-custom.mp4",
-    poster: "/works/posters/clothes-custom.mp4.png"
+    video: asset("/works/clothes-custom.mp4"),
+    poster: asset("/works/posters/clothes-custom.mp4.png")
   },
   {
     id: "master-sborki",
@@ -85,8 +87,8 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Профессиональный сайт для компании по сборке мебели и оборудования.",
     stack: ["Landing", "Услуги", "Быстрый запуск"],
-    video: "/works/master-sborki.mp4",
-    poster: "/works/posters/master-sborki.mp4.png"
+    video: asset("/works/master-sborki.mp4"),
+    poster: asset("/works/posters/master-sborki.mp4.png")
   },
   {
     id: "pobeda-cinema",
@@ -95,8 +97,8 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Сайт для кинотеатра с расписанием сеансов и онлайн-бронированием билетов.",
     stack: ["Landing", "Расписание", "Бронирование"],
-    video: "/works/pobeda kinoteatr.mp4",
-    poster: "/works/posters/pobeda kinoteatr.mp4.png"
+    video: asset("/works/pobeda kinoteatr.mp4"),
+    poster: asset("/works/posters/pobeda kinoteatr.mp4.png")
   },
   {
     id: "portfolio-site",
@@ -105,8 +107,8 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Персональный портфолио сайт с современным дизайном и презентацией работ.",
     stack: ["Portfolio", "Motion", "UI"],
-    video: "/works/portfolio-site.mp4",
-    poster: "/works/posters/portfolio-site.mp4.png"
+    video: asset("/works/portfolio-site.mp4"),
+    poster: asset("/works/posters/portfolio-site.mp4.png")
   },
   {
     id: "students-work",
@@ -115,7 +117,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Пример выполненной студенческой работы по требованиям и методическим указаниям.",
     stack: ["UI", "Контент", "Структура"],
-    video: "/works/students-work.mp4",
-    poster: "/works/posters/students-work.mp4.png"
+    video: asset("/works/students-work.mp4"),
+    poster: asset("/works/posters/students-work.mp4.png")
   }
 ];
