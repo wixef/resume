@@ -1,0 +1,503 @@
+import { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import BackgroundGrid from "@/components/BackgroundGrid";
+import CustomCursor from "@/components/CustomCursor";
+import NeonLoader from "@/components/NeonLoader";
+import NavBar from "@/components/NavBar";
+import Section from "@/components/Section";
+import TypedText from "@/components/TypedText";
+import Counter from "@/components/Counter";
+import IconCube from "@/components/IconCube";
+import TechGrid from "@/components/TechGrid";
+import PortfolioCard from "@/components/PortfolioCard";
+import PortfolioViewer from "@/components/PortfolioViewer";
+import BotChatDemo from "@/components/BotChatDemo";
+import Toast from "@/components/Toast";
+import { config } from "@/config";
+import { portfolioItems } from "@/data/portfolio";
+import { tech } from "@/data/tech";
+
+const WORDS = ["Сайты", "Фронтенд", "Интернет-магазины", "Telegram-боты"];
+
+function scrollToId(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const y = el.getBoundingClientRect().top + window.scrollY - 72;
+  window.scrollTo({ top: y, behavior: "smooth" });
+}
+
+function isGitHubPagesHost() {
+  if (typeof window === "undefined") return false;
+  return window.location.hostname.endsWith(".github.io");
+}
+
+export default function App() {
+  const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [viewerIndex, setViewerIndex] = useState<number | null>(null);
+  const [sending, setSending] = useState(false);
+  const [toast, setToast] = useState<{ title: string; text?: string } | null>(null);
+
+  useEffect(() => {
+    const t = window.setTimeout(() => setLoading(false), 850);
+    return () => window.clearTimeout(t);
+  }, []);
+
+  const filtered = useMemo(() => portfolioItems, []);
+
+  const pageSize = 10;
+  const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const pageItems = useMemo(() => {
+    const start = (page - 1) * pageSize;
+    return filtered.slice(start, start + pageSize);
+  }, [filtered, page]);
+
+  return (
+    <div className="min-h-screen">
+      <BackgroundGrid />
+      <CustomCursor />
+      <NeonLoader show={loading} />
+      <NavBar />
+
+      <main>
+        {/* HERO */}
+        <section
+          id="hero"
+          className="w-full px-5 pb-8 pt-24 md:px-8 md:pb-10 md:pt-28 xl:px-14"
+        >
+          <div
+            className="hero-shell flex w-full flex-col justify-start px-5 py-10 md:px-8 md:py-12 xl:px-10"
+            style={{ minHeight: "calc(100svh - 6rem)" }}
+          >
+          <div className="grid items-start gap-12 xl:grid-cols-[1.2fr_0.8fr]">
+            <motion.div
+              initial={false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="glass-pill inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm text-white/70">
+                <span className="h-2.5 w-2.5 rounded-full bg-neonCyan shadow-[0_0_20px_rgba(0,243,255,0.75)]" />
+                <span className="font-display tracking-wide">Доступен к работе</span>
+                <span className="text-white/35">/</span>
+                <span className="text-white/55">2026</span>
+              </div>
+
+              <h1 className="mt-7 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-white md:text-7xl">
+                <span
+                  className="glitch glitch-static"
+                  data-text="Олег. 18 лет. 100+ проектов. 4 года."
+                >
+                  Олег. 18 лет. 100+ проектов. 4 года.
+                </span>
+              </h1>
+
+              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl">
+                Frontend / backend разработчик. Делаю лендинги, интернет-магазины,
+                админ-панели, Telegram-ботов и серверную часть под проекты.
+                <span className="text-white/45">
+                  {" "}
+                  4 года практики, 100+ проектов, полный цикл от интерфейса до запуска.
+                </span>
+              </p>
+
+              <div className="mt-6 flex flex-wrap items-center gap-4">
+                <div className="glass-panel rounded-[28px] px-5 py-4">
+                  <div className="text-sm text-white/50">Я делаю</div>
+                  <div className="mt-2 font-display text-2xl text-white/90 md:text-3xl">
+                    <TypedText words={WORDS} />
+                  </div>
+                </div>
+
+                <div className="glass-panel rounded-[28px] px-5 py-4">
+                  <div className="text-sm text-white/50">Проектов</div>
+                  <div className="mt-2 font-display text-2xl text-white/90 md:text-3xl">
+                    <Counter to={100} suffix="+" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={() => scrollToId("portfolio")}
+                  className="glass-pill rounded-3xl px-6 py-4 text-base text-white/85 transition hover:bg-white/10"
+                >
+                  Портфолио
+                </button>
+                <a
+                  href={config.links.telegram}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="glass-pill rounded-3xl px-6 py-4 text-base text-white/85 transition hover:bg-white/10"
+                >
+                  Telegram
+                </a>
+                <button
+                  type="button"
+                  onClick={() => scrollToId("contacts")}
+                  className="glass-pill rounded-3xl px-6 py-4 text-base text-white/75 transition hover:bg-white/10"
+                >
+                  Написать
+                </button>
+              </div>
+
+              <div className="mt-7 max-w-xl text-lg leading-relaxed text-white/70 md:text-xl">
+                <div className="flex flex-wrap gap-x-6 gap-y-2">
+                  <span className="text-white/85">Лендинги</span>
+                  <span className="text-white/35">/</span>
+                  <span className="text-white/85">Интернет‑магазины</span>
+                  <span className="text-white/35">/</span>
+                  <span className="text-white/85">Админ‑панели</span>
+                  <span className="text-white/35">/</span>
+                  <span className="text-white/85">Telegram‑боты</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={false}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.45, delay: 0.02 }}
+              className="mx-auto flex w-full max-w-md justify-center md:max-w-none"
+            >
+              <div className="relative">
+                <div className="absolute -inset-6 rounded-[28px] bg-gradient-to-b from-neonCyan/10 via-transparent to-neonPink/10 blur-2xl" />
+                <IconCube />
+              </div>
+            </motion.div>
+          </div>
+          </div>
+        </section>
+
+        {/* WHAT I DO */}
+        <Section
+          id="do"
+          title="Что я делаю"
+          subtitle="Основной фокус — сайты под конкретную задачу: заявки, продажи, личный бренд или внутренний сервис. Дополнительно беру SEO, аналитику и автоматизацию."
+          variant="section-do"
+        >
+          <div className="grid gap-5 lg:grid-cols-2">
+            <div className="glass-panel relative rounded-[32px] p-8 transition hover:shadow-neon">
+              <div className="pointer-events-none absolute -left-24 -top-24 h-56 w-56 rounded-full bg-neonCyan/8 blur-2xl" />
+              <div className="relative">
+                <div className="font-display text-2xl font-semibold text-white/90 md:text-3xl">
+                  Сайты
+                </div>
+                <ul className="mt-4 grid gap-3 text-lg text-white/70">
+                  <li>Лендинги, многостраничные сайты, интернет-магазины, админ-панели</li>
+                  <li>Верстка по макету, копии сайтов, правки и развитие существующих проектов</li>
+                  <li>Адаптив, аккуратная типографика, анимации и структура под заявки</li>
+                  <li>Интеграции с формами, CRM, аналитикой, REST API и базами данных</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="glass-panel relative rounded-[32px] p-8 transition hover:shadow-neon">
+              <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-neonPink/8 blur-2xl" />
+              <div className="relative">
+                <div className="font-display text-2xl font-semibold text-white/90 md:text-3xl">
+                  SEO, аналитика и автоматизация
+                </div>
+                <ul className="mt-4 grid gap-3 text-lg text-white/70">
+                  <li>Полная SEO-настройка: meta, schema, sitemap, robots, speed, 404 и редиректы</li>
+                  <li>Яндекс.Метрика, GA4, цели, конверсии, вебмастер и готовность к индексации</li>
+                  <li>Рекомендации по контенту, ключам и дальнейшему продвижению сайта</li>
+                  <li>Telegram-боты, backend на Node.js и серверная часть под автоматизацию</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        {/* TECH */}
+        <Section
+          id="tech"
+          title="Технологии"
+          subtitle="Стек, с которым я работаю на реальных проектах: frontend, backend, интеграции, серверы и деплой."
+          variant="section-tech"
+        >
+          <TechGrid items={tech} />
+        </Section>
+
+        {/* PORTFOLIO */}
+        <Section
+          id="portfolio"
+          title="Портфолио (100+)"
+          subtitle="Часть реальных работ: лендинги, сервисы, каталоги и сайты под конкретные задачи."
+          variant="section-portfolio"
+        >
+          <div className="grid gap-6">
+            {pageItems.map((it, itemIndex) => {
+              const absoluteIndex = (page - 1) * pageSize + itemIndex;
+
+              return (
+                <PortfolioCard
+                  key={it.id}
+                  item={it}
+                  index={absoluteIndex}
+                  onOpen={() => setViewerIndex(absoluteIndex)}
+                />
+              );
+            })}
+          </div>
+
+          <PortfolioViewer
+            items={filtered}
+            index={viewerIndex}
+            onClose={() => setViewerIndex(null)}
+            onChange={setViewerIndex}
+          />
+
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+            <div className="text-base text-white/55">
+              Показано: <span className="text-white/80">{pageItems.length}</span>{" "}
+              из <span className="text-white/80">{filtered.length}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setPage((p) => Math.max(1, p - 1))}
+                disabled={page <= 1}
+                className="glass-pill rounded-3xl px-5 py-3 text-base text-white/75 transition enabled:hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                ←
+              </button>
+              <div className="glass-panel rounded-3xl px-5 py-3 text-base text-white/75">
+                {page} / {pages}
+              </div>
+              <button
+                type="button"
+                onClick={() => setPage((p) => Math.min(pages, p + 1))}
+                disabled={page >= pages}
+                className="glass-pill rounded-3xl px-5 py-3 text-base text-white/75 transition enabled:hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                →
+              </button>
+            </div>
+          </div>
+        </Section>
+
+        {/* PET */}
+        <Section
+          id="pet"
+          title="Pet‑проект: Telegram‑бот с автоматической выдачей услуг"
+          subtitle="Полная автоматизация: оплата → проверка → выдача доступа."
+          variant="section-pet"
+        >
+          <BotChatDemo />
+        </Section>
+
+        {/* ABOUT */}
+        <Section id="about" title="Обо мне" variant="section-about">
+          <div className="glass-panel relative rounded-[32px] p-10 transition hover:shadow-neon">
+            <div className="pointer-events-none absolute -left-24 -top-24 h-56 w-56 rounded-full bg-neonCyan/10 blur-2xl" />
+            <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-neonPink/10 blur-2xl" />
+
+            <div className="relative max-w-3xl text-lg leading-relaxed text-white/75 md:text-xl">
+              Мне 18 лет, во фронтенде 4 года. Основная специализация —
+              разработка сайтов: лендинги, интернет‑магазины, админ‑панели.
+              За это время сделал 100+ проектов разной сложности, в большинстве
+              случаев самостоятельно — от дизайна и интерфейса до запуска.
+              Также делаю backend‑часть, Telegram‑ботов и разворачиваю серверы
+              (VPS, 3x‑ui, Linux). Фриланс дал мне сильную практику, скорость и
+              самостоятельность, а сейчас я ищу стабильную работу в команде,
+              где смогу расти как разработчик, брать ответственность за
+              результат и работать вдолгую. Интересен удалённый формат и сильные проекты.
+            </div>
+          </div>
+        </Section>
+
+        {/* CONTACTS */}
+        <Section
+          id="contacts"
+          title="Контакты"
+          subtitle="Связаться можно напрямую в Telegram или по email."
+          variant="section-contacts"
+        >
+          <div className="grid items-start gap-4 md:grid-cols-2">
+            <div className="grid gap-4">
+              {[
+                {
+                  title: "Telegram",
+                  value: config.links.telegramHandle,
+                  action: "Открыть",
+                  href: config.links.telegram,
+                  accent: "cyan"
+                },
+                {
+                  title: "Email",
+                  value: config.links.email,
+                  action: "Скопировать",
+                  onClick: async () => {
+                    try {
+                      await navigator.clipboard.writeText(config.links.email);
+                      setToast({
+                        title: "Email скопирован",
+                        text: config.links.email
+                      });
+                    } catch {
+                      setToast({
+                        title: "Не удалось скопировать",
+                        text: "Откройте сайт через http(s) (dev/preview) или скопируйте вручную."
+                      });
+                    }
+                  },
+                  accent: "cyan"
+                }
+              ].map((c) => (
+                <div key={c.title} className="glass-panel relative rounded-[32px] p-8 transition hover:shadow-neon">
+                  <div
+                    className="pointer-events-none absolute -left-16 -top-16 h-40 w-40 rounded-full blur-2xl"
+                    style={{
+                      background:
+                        c.accent === "cyan"
+                          ? "rgba(0,243,255,0.10)"
+                          : "rgba(255,0,229,0.10)"
+                    }}
+                  />
+                  <div className="relative flex items-start justify-between gap-4">
+                    <div>
+                      <div className="text-sm text-white/55">{c.title}</div>
+                      <div className="mt-2 break-all font-display text-xl font-semibold text-white/90 md:text-2xl">
+                        {c.value}
+                      </div>
+                    </div>
+                    {c.href ? (
+                      <a
+                        href={c.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="glass-pill rounded-2xl px-4 py-3 text-sm text-white/80 hover:bg-white/10"
+                      >
+                        {c.action} →
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        className="glass-pill rounded-2xl px-4 py-3 text-sm text-white/80 hover:bg-white/10"
+                        onClick={c.onClick}
+                      >
+                        {c.action}
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="glass-panel relative rounded-[32px] p-8 md:pb-10">
+              <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-neonPink/10 blur-2xl" />
+              <div className="relative">
+                <div className="font-display text-2xl font-semibold text-white/90 md:text-3xl">
+                  Форма обратной связи
+                </div>
+                <form
+                  className="mt-6 grid gap-4 pb-2"
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    const form = e.currentTarget;
+                    const fd = new FormData(form);
+                    const name = String(fd.get("name") ?? "").trim();
+                    const message = String(fd.get("message") ?? "").trim();
+
+                    if (!message) {
+                      setToast({
+                        title: "Добавь сообщение",
+                        text: "Нужно заполнить поле с текстом."
+                      });
+                      return;
+                    }
+
+                    if (isGitHubPagesHost()) {
+                      void navigator.clipboard
+                        .writeText(`Имя: ${name || "Без имени"}\nСообщение: ${message}`)
+                        .catch(() => {});
+                      window.open(config.links.telegram, "_blank", "noopener,noreferrer");
+                      setToast({
+                        title: "Открываю Telegram",
+                        text: "Текст сообщения скопирован. На GitHub Pages связь идёт через Telegram."
+                      });
+                      return;
+                    }
+
+                    try {
+                      setSending(true);
+                      const response = await fetch("/api/contact", {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ name, message })
+                      });
+
+                      const data = (await response.json()) as { ok?: boolean; error?: string };
+
+                      if (!response.ok || !data.ok) {
+                        throw new Error(data.error || "Ошибка отправки");
+                      }
+
+                      setToast({
+                        title: "Сообщение отправлено",
+                        text: "Заявка улетела в Telegram."
+                      });
+                      form.reset();
+                    } catch (error) {
+                      setToast({
+                        title: "Не удалось отправить",
+                        text:
+                          error instanceof Error
+                            ? error.message
+                            : "Попробуй ещё раз через пару секунд."
+                      });
+                    } finally {
+                      setSending(false);
+                    }
+                  }}
+                >
+                  <label className="grid gap-1">
+                    <span className="text-sm text-white/55">Имя</span>
+                    <input
+                      name="name"
+                      placeholder="Как к вам обращаться?"
+                      className="glass-soft rounded-3xl border border-white/10 px-5 py-4 text-base text-white/85 outline-none ring-0 transition focus:border-white/20 focus:shadow-[0_0_0_1px_rgba(0,243,255,0.22),0_0_26px_rgba(0,243,255,0.10)]"
+                    />
+                  </label>
+                  <label className="grid gap-1">
+                    <span className="text-sm text-white/55">Сообщение</span>
+                    <textarea
+                      name="message"
+                      placeholder="Напишите задачу / сроки / бюджет…"
+                      rows={5}
+                      className="glass-soft resize-none rounded-3xl border border-white/10 px-5 py-4 text-base text-white/85 outline-none transition focus:border-white/20 focus:shadow-[0_0_0_1px_rgba(255,0,229,0.18),0_0_26px_rgba(255,0,229,0.10)]"
+                    />
+                  </label>
+                  <button
+                    type="submit"
+                    disabled={sending}
+                    className="glass-pill rounded-3xl px-6 py-4 text-base text-white/85 transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    {sending ? "Отправляю..." : "Отправить"}
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </Section>
+      </main>
+
+      <footer className="w-full px-5 pb-14 pt-6 md:px-8 md:pt-8 xl:px-14">
+        <div className="glass-panel rounded-[28px] p-5 text-center text-sm text-white/55">
+          <span className="font-display text-white/75">{config.person.name}</span>{" "}
+          — {config.person.title}. Сделано на React + Tailwind + Framer Motion.
+        </div>
+      </footer>
+
+      <Toast
+        show={!!toast}
+        title={toast?.title ?? ""}
+        text={toast?.text}
+        onClose={() => setToast(null)}
+      />
+    </div>
+  );
+}

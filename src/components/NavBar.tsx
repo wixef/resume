@@ -1,0 +1,180 @@
+import { useEffect, useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { config } from "@/config";
+import { cn } from "@/lib/cn";
+
+type NavItem = { id: string; label: string };
+
+const items: NavItem[] = [
+  { id: "hero", label: "Главная" },
+  { id: "do", label: "Услуги" },
+  { id: "tech", label: "Технологии" },
+  { id: "portfolio", label: "Портфолио" },
+  { id: "pet", label: "Telegram‑бот" },
+  { id: "about", label: "Обо мне" },
+  { id: "contacts", label: "Контакты" }
+];
+
+function scrollToId(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const y = el.getBoundingClientRect().top + window.scrollY - 72;
+  window.scrollTo({ top: y, behavior: "smooth" });
+}
+
+export default function NavBar() {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const nav = useMemo(() => items, []);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  return (
+    <div className="fixed left-0 top-0 z-50 w-full">
+      <div className="px-5 pt-4 md:px-8 xl:px-14">
+        <div
+          className={cn(
+            "glass-panel glass-header rounded-[30px] px-5 py-4 md:px-7",
+            "border-transparent",
+            scrolled ? "glass-header-scrolled" : ""
+          )}
+        >
+          <div className="flex items-center justify-between gap-4">
+        <button
+          type="button"
+          className="group flex items-center gap-2 text-left"
+          onClick={() => scrollToId("hero")}
+        >
+          <span className="glass-pill grid h-9 w-9 place-items-center rounded-xl">
+            <span className="font-display text-sm tracking-wide text-white/85">
+              O
+            </span>
+          </span>
+          <span className="hidden sm:block">
+            <span className="block font-display text-sm font-semibold text-white/90">
+              {config.person.name}
+            </span>
+            <span className="block text-xs text-white/55">frontend</span>
+          </span>
+        </button>
+
+        <div className="hidden items-center gap-2 md:flex">
+          {nav.map((it) => (
+            <button
+              key={it.id}
+              type="button"
+              onClick={() => scrollToId(it.id)}
+              className="rounded-xl px-3 py-2 text-sm text-white/70 transition hover:bg-white/10 hover:text-white/95"
+            >
+              {it.label}
+            </button>
+          ))}
+          <a
+            href={config.links.telegram}
+            target="_blank"
+            rel="noreferrer"
+            className="glass-pill ml-2 rounded-xl px-4 py-2 text-sm text-white/85 transition hover:bg-white/10"
+          >
+            Telegram
+          </a>
+        </div>
+
+        <button
+          type="button"
+          className="glass-pill relative grid h-10 w-10 place-items-center rounded-xl md:hidden"
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Открыть меню"
+        >
+          <span className="block h-4 w-5">
+            <span
+              className={cn(
+                "block h-[2px] w-5 rounded-full bg-white/80 transition",
+                open ? "translate-y-[7px] rotate-45" : ""
+              )}
+            />
+            <span
+              className={cn(
+                "mt-[5px] block h-[2px] w-5 rounded-full bg-white/60 transition",
+                open ? "opacity-0" : ""
+              )}
+            />
+            <span
+              className={cn(
+                "mt-[5px] block h-[2px] w-5 rounded-full bg-white/80 transition",
+                open ? "-translate-y-[7px] -rotate-45" : ""
+              )}
+            />
+          </span>
+        </button>
+          </div>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {open ? (
+          <motion.div
+            className="md:hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="px-5 pb-4 md:px-8 xl:px-14">
+              <div className="glass-panel rounded-2xl p-3">
+                <div className="grid gap-1">
+                  {nav.map((it) => (
+                    <button
+                      key={it.id}
+                      type="button"
+                      onClick={() => {
+                        setOpen(false);
+                        scrollToId(it.id);
+                      }}
+                      className="rounded-xl px-3 py-3 text-left text-sm text-white/80 hover:bg-white/10"
+                    >
+                      {it.label}
+                    </button>
+                  ))}
+                </div>
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  <a
+                    href={config.links.telegram}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="glass-pill rounded-xl px-3 py-3 text-center text-sm text-white/85"
+                  >
+                    Telegram
+                  </a>
+                  <button
+                    type="button"
+                    className="glass-pill rounded-xl px-3 py-3 text-center text-sm text-white/85"
+                    onClick={() => {
+                      setOpen(false);
+                      scrollToId("portfolio");
+                    }}
+                  >
+                    Портфолио
+                  </button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </div>
+  );
+}

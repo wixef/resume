@@ -1,0 +1,401 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg0: #07090d;
+  --bg1: #111826;
+  --cyan: #00f3ff;
+  --pink: #ff00e5;
+  --glass-fill: rgba(255, 255, 255, 0.08);
+  --glass-fill-strong: rgba(255, 255, 255, 0.12);
+  --glass-stroke: rgba(255, 255, 255, 0.16);
+  --glass-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  scroll-padding-top: 88px;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: linear-gradient(180deg, var(--bg0), var(--bg1));
+  color: rgba(255, 255, 255, 0.9);
+  overflow-x: hidden;
+  font-size: 18px;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+html.cursor-none,
+html.cursor-none * {
+  cursor: none !important;
+}
+
+html.cursor-none .system-cursor,
+html.cursor-none .system-cursor * {
+  cursor: auto !important;
+}
+
+html.viewer-open .custom-cursor-ring,
+html.viewer-open .custom-cursor-dot {
+  opacity: 0 !important;
+}
+
+::selection {
+  background: rgba(0, 243, 255, 0.25);
+}
+
+/* Глитч-эффект для заголовков при ховере */
+.glitch {
+  position: relative;
+  display: inline-block;
+  will-change: transform, filter;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: screen;
+}
+.glitch::before {
+  transform: translate(1px, -1px);
+  color: rgba(0, 243, 255, 0.9);
+}
+.glitch::after {
+  transform: translate(-1px, 1px);
+  color: rgba(255, 0, 229, 0.9);
+}
+.glitch:hover {
+  filter: saturate(1.2);
+}
+.glitch:hover::before,
+.glitch:hover::after {
+  opacity: 0.9;
+  animation: glitch 420ms steps(2, end) infinite;
+}
+
+.glitch-static {
+  filter: saturate(1.1);
+}
+
+.glitch-static::before,
+.glitch-static::after {
+  opacity: 0.95;
+}
+
+.glitch-static::before {
+  transform: translate(2px, -1px);
+}
+
+.glitch-static::after {
+  transform: translate(-2px, 1px);
+}
+@keyframes glitch {
+  0% {
+    clip-path: inset(0 0 65% 0);
+  }
+  50% {
+    clip-path: inset(35% 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Раньше clip-path резал контент. Оставляем класс, но без обрезки. */
+.slanted {
+  clip-path: none;
+}
+
+.glass-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--glass-stroke);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.05)),
+    rgba(13, 18, 28, 0.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.03),
+    var(--glass-shadow);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 28%),
+    radial-gradient(90% 120% at 0% 0%, rgba(255, 255, 255, 0.16), transparent 40%),
+    radial-gradient(80% 100% at 100% 100%, rgba(255, 0, 229, 0.08), transparent 45%);
+  opacity: 0.8;
+}
+
+.glass-header::before {
+  display: none;
+}
+
+.glass-header {
+  border-color: transparent !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015)),
+    rgba(16, 22, 32, 0.2);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.14),
+    0 0 0 1px rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
+}
+
+.glass-header::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 26%),
+    radial-gradient(38% 140% at 50% 0%, rgba(255, 255, 255, 0.05), transparent 58%);
+  opacity: 0.32;
+}
+
+.glass-header-scrolled {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02)),
+    rgba(14, 20, 30, 0.28);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.025);
+}
+
+.glass-soft {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+    rgba(10, 14, 22, 0.44);
+}
+
+.glass-pill {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 12px 28px rgba(0, 0, 0, 0.22);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.section-shell {
+  background:
+    linear-gradient(180deg, rgba(18, 26, 38, 0.82), rgba(10, 14, 22, 0.78)),
+    rgba(9, 13, 20, 0.78);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 24px 60px rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(70, 96, 130, 0.18);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.section-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(720px 420px at 0% 0%, rgba(0, 243, 255, 0.12), transparent 58%),
+    radial-gradient(720px 420px at 100% 100%, rgba(255, 0, 229, 0.10), transparent 58%);
+  opacity: 0.7;
+}
+
+.section-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.hero-shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 40px;
+  background:
+    linear-gradient(180deg, rgba(18, 28, 40, 0.74), rgba(9, 13, 20, 0.76)),
+    rgba(9, 13, 20, 0.74);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 28px 70px rgba(0, 0, 0, 0.24),
+    0 0 0 1px rgba(70, 96, 130, 0.14);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.hero-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(920px 520px at 0% 18%, rgba(0, 243, 255, 0.12), transparent 58%),
+    radial-gradient(920px 520px at 100% 18%, rgba(255, 0, 229, 0.1), transparent 58%);
+}
+
+.hero-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.section-do::before {
+  background:
+    radial-gradient(640px 380px at 0% 22%, rgba(0, 243, 255, 0.13), transparent 56%),
+    radial-gradient(760px 440px at 100% 80%, rgba(255, 0, 229, 0.08), transparent 60%);
+}
+
+.section-tech::before {
+  background:
+    radial-gradient(700px 380px at 8% 18%, rgba(0, 243, 255, 0.14), transparent 58%),
+    radial-gradient(700px 400px at 100% 16%, rgba(120, 100, 255, 0.12), transparent 60%);
+}
+
+.section-portfolio::before {
+  background:
+    radial-gradient(760px 460px at 0% 12%, rgba(0, 243, 255, 0.08), transparent 56%),
+    radial-gradient(820px 460px at 100% 82%, rgba(255, 0, 229, 0.11), transparent 58%);
+}
+
+.section-pet::before {
+  background:
+    radial-gradient(680px 380px at 0% 14%, rgba(65, 155, 255, 0.16), transparent 56%),
+    radial-gradient(760px 420px at 100% 85%, rgba(255, 0, 229, 0.1), transparent 60%);
+}
+
+.section-about::before {
+  background:
+    radial-gradient(760px 420px at 0% 60%, rgba(0, 243, 255, 0.08), transparent 56%),
+    radial-gradient(760px 420px at 100% 20%, rgba(255, 0, 229, 0.08), transparent 60%);
+}
+
+.section-contacts::before {
+  background:
+    radial-gradient(760px 420px at 0% 12%, rgba(0, 243, 255, 0.1), transparent 56%),
+    radial-gradient(760px 420px at 100% 88%, rgba(255, 0, 229, 0.08), transparent 60%);
+}
+
+/* Аккуратный скроллбар под тёмную тему */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 243, 255, 0.25) rgba(255, 255, 255, 0.06);
+}
+*::-webkit-scrollbar {
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+}
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0, 243, 255, 0.28), rgba(255, 0, 229, 0.22));
+  border-radius: 999px;
+}
+
+.video-slider {
+  width: 100%;
+  height: 8px;
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+}
+
+.video-slider::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 999px;
+  background: transparent;
+}
+
+.video-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -5px;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(0, 243, 255, 1), rgba(255, 0, 229, 1));
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, 0.08),
+    0 0 18px rgba(0, 243, 255, 0.35),
+    0 0 22px rgba(255, 0, 229, 0.22);
+}
+
+.video-slider::-moz-range-track {
+  height: 8px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+}
+
+.video-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(0, 243, 255, 1), rgba(255, 0, 229, 1));
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, 0.08),
+    0 0 18px rgba(0, 243, 255, 0.35),
+    0 0 22px rgba(255, 0, 229, 0.22);
+}
+
+.code-fragment {
+  position: absolute;
+  font-family: "Space Grotesk", Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  opacity: 0.1;
+  user-select: none;
+  white-space: nowrap;
+  transform: translate3d(0, 0, 0);
+  animation: none;
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.06);
+}
+
+.code-cyan {
+  color: rgba(0, 243, 255, 0.42);
+}
+
+.code-pink {
+  color: rgba(255, 0, 229, 0.3);
+}
+
+.custom-cursor-ring {
+  transition: transform 140ms ease-out, opacity 140ms ease-out;
+}
