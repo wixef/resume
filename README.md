@@ -21,17 +21,21 @@ npm run build
 
 ## GitHub Pages
 
-В проект уже добавлен workflow для GitHub Pages: `.github/workflows/deploy-pages.yml`.
+В проект уже добавлен workflow для публикации в ветку `gh-pages`: `.github/workflows/deploy-gh-pages.yml`.
 
 Что сделать:
 
 1. Создать репозиторий на GitHub
 2. Залить туда проект
 3. Запушить в ветку `main`
-4. В GitHub открыть `Settings → Pages`
-5. В `Build and deployment` выбрать `GitHub Actions`
+4. Дождаться, пока GitHub Actions создаст ветку `gh-pages`
+5. В GitHub открыть `Settings → Pages`
+6. В `Build and deployment` выбрать:
+   - `Source` → `Deploy from a branch`
+   - branch → `gh-pages`
+   - folder → `/(root)`
 
-После этого сайт будет автоматически публиковаться на домене GitHub Pages после каждого пуша в `main`.
+После этого сайт будет публиковаться автоматически после каждого пуша в `main`.
 
 Важно:
 
