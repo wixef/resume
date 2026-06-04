@@ -7,7 +7,7 @@ type NavItem = { id: string; label: string };
 
 const items: NavItem[] = [
   { id: "hero", label: "Главная" },
-  { id: "do", label: "Услуги" },
+  { id: "do", label: "Направления" },
   { id: "tech", label: "Технологии" },
   { id: "portfolio", label: "Портфолио" },
   { id: "pet", label: "Telegram‑бот" },

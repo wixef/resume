@@ -242,19 +242,19 @@ export default function BotChatDemo() {
       <div className="order-2 grid gap-4 xl:order-1">
         <div className="glass-panel rounded-[24px] p-5 md:rounded-[30px] md:p-7">
           <div className="font-display text-xl font-semibold text-white/92 md:text-2xl">
-            Сценарий работы
+            Что реализовано
           </div>
           <ul className="mt-3 grid gap-2 text-sm text-white/72 md:mt-4 md:gap-3 md:text-lg">
-            <li>Сначала пробный доступ и покупка, потом уже личные разделы</li>
-            <li>Автоматический сценарий: выбор → оплата → подтверждение → активация</li>
+            <li>Сценарий доступа: выбор → оплата → подтверждение → активация</li>
             <li>Личный кабинет прямо в чате: ключ, подписка, продление, инструкция</li>
-            <li>Подача и навигация приближены к Telegram-интерфейсу</li>
+            <li>Управление основными действиями без перехода во внешнюю панель</li>
+            <li>Интерфейс и навигация под формат Telegram-бота</li>
           </ul>
         </div>
 
         <div className="glass-panel rounded-[24px] p-5 md:rounded-[30px] md:p-7">
           <div className="font-display text-xl font-semibold text-white/92 md:text-2xl">
-            Что внутри
+            Технически
           </div>
           <ul className="mt-3 grid gap-2 text-sm text-white/72 md:mt-4 md:gap-3 md:text-lg">
             <li>Node.js + Telegram Bot API</li>

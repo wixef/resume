@@ -17,7 +17,7 @@ import { config } from "@/config";
 import { portfolioItems } from "@/data/portfolio";
 import { tech } from "@/data/tech";
 
-const WORDS = ["Сайты", "Фронтенд", "Интернет-магазины", "Telegram-боты"];
+const WORDS = ["Frontend", "Backend", "Интерфейсы", "Telegram-боты"];
 
 function scrollToId(id: string) {
   const el = document.getElementById(id);
@@ -77,7 +77,7 @@ export default function App() {
             >
               <div className="glass-pill inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm text-white/70">
                 <span className="h-2.5 w-2.5 rounded-full bg-neonCyan shadow-[0_0_20px_rgba(0,243,255,0.75)]" />
-                <span className="font-display tracking-wide">Доступен к работе</span>
+                <span className="font-display tracking-wide">Открыт к предложениям</span>
                 <span className="text-white/35">/</span>
                 <span className="text-white/55">2026</span>
               </div>
@@ -85,33 +85,33 @@ export default function App() {
               <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight text-white md:mt-7 md:text-7xl">
                 <span
                   className="glitch glitch-static"
-                  data-text="Олег. 18 лет. 100+ проектов. 4 года."
+                  data-text="Олег. Frontend / backend разработчик."
                 >
-                  Олег. 18 лет. 100+ проектов. 4 года.
+                  Олег. Frontend / backend разработчик.
                 </span>
               </h1>
 
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:mt-5 md:text-xl">
-                Frontend / backend разработчик. Делаю лендинги, интернет-магазины,
-                админ-панели, Telegram-ботов и серверную часть под проекты.
+                Разрабатываю сайты, интерфейсы, административные панели,
+                Telegram-ботов и backend-часть для веб-проектов.
                 <span className="text-white/45">
-                  {" "}
-                  4 года практики, 100+ проектов, полный цикл от интерфейса до запуска.
+                  {" "}4 года практики, коммерческие и личные проекты, работа от
+                  интерфейса до запуска.
                 </span>
               </p>
 
               <div className="mt-5 grid gap-3 sm:flex sm:flex-wrap sm:items-center sm:gap-4">
                 <div className="glass-panel rounded-[24px] px-4 py-3 md:rounded-[28px] md:px-5 md:py-4">
-                  <div className="text-sm text-white/50">Я делаю</div>
+                  <div className="text-sm text-white/50">Специализация</div>
                   <div className="mt-2 font-display text-xl text-white/90 md:text-3xl">
                     <TypedText words={WORDS} />
                   </div>
                 </div>
 
                 <div className="glass-panel rounded-[24px] px-4 py-3 md:rounded-[28px] md:px-5 md:py-4">
-                  <div className="text-sm text-white/50">Проектов</div>
+                  <div className="text-sm text-white/50">Опыт</div>
                   <div className="mt-2 font-display text-xl text-white/90 md:text-3xl">
-                    <Counter to={100} suffix="+" />
+                    <Counter to={4} suffix=" года" />
                   </div>
                 </div>
               </div>
@@ -143,7 +143,7 @@ export default function App() {
 
               <div className="mt-6 max-w-xl text-base leading-relaxed text-white/70 md:text-xl">
                 <div className="flex flex-wrap gap-x-6 gap-y-2">
-                  <span className="text-white/85">Лендинги</span>
+                  <span className="text-white/85">Сайты</span>
                   <span className="text-white/35">/</span>
                   <span className="text-white/85">Интернет‑магазины</span>
                   <span className="text-white/35">/</span>
@@ -172,8 +172,8 @@ export default function App() {
         {/* WHAT I DO */}
         <Section
           id="do"
-          title="Что я делаю"
-          subtitle="Основной фокус — сайты под конкретную задачу: заявки, продажи, личный бренд или внутренний сервис. Дополнительно беру SEO, аналитику и автоматизацию."
+          title="Направления"
+          subtitle="Основная специализация — разработка сайтов и интерфейсов. Дополнительно беру backend, интеграции, SEO и техническую настройку проекта."
           variant="section-do"
         >
           <div className="grid gap-5 lg:grid-cols-2">
@@ -185,8 +185,8 @@ export default function App() {
                 </div>
                 <ul className="mt-4 grid gap-3 text-lg text-white/70">
                   <li>Лендинги, многостраничные сайты, интернет-магазины, админ-панели</li>
-                  <li>Верстка по макету, копии сайтов, правки и развитие существующих проектов</li>
-                  <li>Адаптив, аккуратная типографика, анимации и структура под заявки</li>
+                  <li>Верстка по макету, доработка существующих проектов, UI-правки</li>
+                  <li>Адаптивная верстка, анимации, работа с типографикой и структурой страниц</li>
                   <li>Интеграции с формами, CRM, аналитикой, REST API и базами данных</li>
                 </ul>
               </div>
@@ -196,13 +196,13 @@ export default function App() {
               <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-neonPink/8 blur-2xl" />
               <div className="relative">
                 <div className="font-display text-2xl font-semibold text-white/90 md:text-3xl">
-                  SEO, аналитика и автоматизация
+                  Backend и техническая часть
                 </div>
                 <ul className="mt-4 grid gap-3 text-lg text-white/70">
-                  <li>Полная SEO-настройка: meta, schema, sitemap, robots, speed, 404 и редиректы</li>
-                  <li>Яндекс.Метрика, GA4, цели, конверсии, вебмастер и готовность к индексации</li>
-                  <li>Рекомендации по контенту, ключам и дальнейшему продвижению сайта</li>
-                  <li>Telegram-боты, backend на Node.js и серверная часть под автоматизацию</li>
+                  <li>Backend на Node.js, REST API, формы, платежные и сторонние интеграции</li>
+                  <li>Telegram-боты с автоматизацией сценариев и управлением из чата</li>
+                  <li>Базовая SEO-настройка, аналитика, индексация и техническая подготовка сайта</li>
+                  <li>Серверы, деплой, Linux, Docker, VPS и Nginx</li>
                 </ul>
               </div>
             </div>
@@ -222,8 +222,8 @@ export default function App() {
         {/* PORTFOLIO */}
         <Section
           id="portfolio"
-          title="Портфолио (100+)"
-          subtitle="Часть реальных работ: лендинги, сервисы, каталоги и сайты под конкретные задачи."
+          title="Портфолио"
+          subtitle="Выборка реализованных проектов по сайтам, интерфейсам и сервисам."
           variant="section-portfolio"
         >
           <div className="grid gap-6">
@@ -282,8 +282,8 @@ export default function App() {
         {/* PET */}
         <Section
           id="pet"
-          title="Pet‑проект: Telegram‑бот с автоматической выдачей услуг"
-          subtitle="Полная автоматизация: оплата → проверка → выдача доступа."
+          title="Telegram‑бот"
+          subtitle="Пример проекта с автоматизацией сценариев, оплатой и выдачей доступа."
           variant="section-pet"
         >
           <BotChatDemo />
@@ -296,15 +296,14 @@ export default function App() {
             <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-neonPink/10 blur-2xl" />
 
             <div className="relative max-w-3xl text-lg leading-relaxed text-white/75 md:text-xl">
-              Мне 18 лет, во фронтенде 4 года. Основная специализация —
-              разработка сайтов: лендинги, интернет‑магазины, админ‑панели.
-              За это время сделал 100+ проектов разной сложности, в большинстве
-              случаев самостоятельно — от дизайна и интерфейса до запуска.
-              Также делаю backend‑часть, Telegram‑ботов и разворачиваю серверы
-              (VPS, 3x‑ui, Linux). Фриланс дал мне сильную практику, скорость и
-              самостоятельность, а сейчас я ищу стабильную работу в команде,
-              где смогу расти как разработчик, брать ответственность за
-              результат и работать вдолгую. Интересен удалённый формат и сильные проекты.
+              Мне 18 лет, во frontend-разработке 4 года. Основная
+              специализация — сайты и интерфейсы: лендинги, интернет‑магазины,
+              административные панели. Также беру backend‑часть, Telegram‑ботов
+              и серверную настройку (VPS, 3x‑ui, Linux). Большую часть задач
+              веду самостоятельно: от структуры и интерфейса до запуска и
+              технической поддержки. Сейчас ищу стабильную работу в команде,
+              где смогу расти как разработчик и брать ответственность за
+              результат.
             </div>
           </div>
         </Section>
