@@ -59,7 +59,7 @@ export default function App() {
       <NeonLoader show={loading} />
       <NavBar />
 
-      <main>
+      <main className="overflow-x-hidden">
         {/* HERO */}
         <section
           id="hero"

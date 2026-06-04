@@ -48,13 +48,14 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
 
   return (
     <motion.div
+      className="min-w-0"
       initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
       <div
         className={cn(
-          "glass-panel group rounded-[24px] p-3 transition duration-300 hover:-translate-y-1 hover:shadow-neon md:rounded-[32px] md:p-6",
+          "glass-panel group w-full min-w-0 max-w-full rounded-[24px] p-3 transition duration-300 hover:-translate-y-1 hover:shadow-neon md:rounded-[32px] md:p-6",
           "xl:grid xl:min-h-[34rem] xl:grid-cols-2 xl:items-stretch xl:gap-8"
         )}
       >
@@ -66,7 +67,7 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
         <div
           ref={mediaRef}
           className={cn(
-            "relative",
+            "relative min-w-0",
             reverse ? "xl:order-2" : "xl:order-1"
           )}
         >
@@ -74,7 +75,7 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
             <button
               type="button"
               onClick={onOpen}
-              className="glass-soft relative block h-full w-full overflow-hidden rounded-[28px] border border-white/10 text-left"
+              className="glass-soft relative block h-full w-full max-w-full overflow-hidden rounded-[28px] border border-white/10 text-left"
             >
               <div className="absolute inset-0 z-[1] bg-[linear-gradient(180deg,transparent,rgba(6,8,12,0.14)_45%,rgba(6,8,12,0.72))]" />
               <div className="absolute left-5 top-5 z-[2]">
@@ -119,14 +120,14 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
 
         <div
           className={cn(
-            "relative flex h-full flex-col justify-between pt-4 xl:pt-0",
+            "relative flex min-w-0 h-full flex-col justify-between pt-4 xl:pt-0",
             reverse ? "xl:order-1" : "xl:order-2"
           )}
         >
           <div className="flex items-start justify-between gap-3">
-            <div>
+            <div className="min-w-0">
               <div className="text-xs text-white/55 md:text-base">{item.category}</div>
-              <div className="mt-1 font-display text-xl font-semibold text-white/92 md:text-4xl">
+              <div className="mt-1 break-words font-display text-xl font-semibold text-white/92 md:text-4xl">
                 {item.title}
               </div>
             </div>
@@ -140,7 +141,7 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
               </button>
             ) : null}
           </div>
-          <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-white/74 md:mt-5 md:text-2xl">
+          <p className="mt-3 max-w-2xl break-words text-[15px] leading-relaxed text-white/74 md:mt-5 md:text-2xl">
             {item.description}
           </p>
           <div className="mt-3 text-xs font-medium tracking-wide text-neonCyan/85 md:text-base">
@@ -159,11 +160,11 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
 
           <div className="mt-5 flex flex-col gap-3 md:mt-8 md:flex-row md:flex-wrap md:items-center md:justify-between">
             <div className="hidden text-sm text-white/45 md:block md:text-base">{subtitle}</div>
-            <div className="grid grid-cols-1 gap-3 sm:flex sm:flex-wrap">
+            <div className="grid min-w-0 grid-cols-1 gap-3 sm:flex sm:flex-wrap">
               <button
                 type="button"
                 onClick={onOpen}
-                className="glass-pill rounded-3xl px-5 py-3 text-sm text-white/85 transition hover:bg-white/10 md:text-base"
+                className="glass-pill w-full rounded-3xl px-5 py-3 text-sm text-white/85 transition hover:bg-white/10 sm:w-auto md:text-base"
               >
                 Смотреть
               </button>
@@ -172,7 +173,7 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="glass-pill rounded-3xl px-5 py-3 text-sm text-neonCyan transition hover:bg-white/10 hover:text-white/92 md:text-base"
+                  className="glass-pill w-full rounded-3xl px-5 py-3 text-center text-sm text-neonCyan transition hover:bg-white/10 hover:text-white/92 sm:w-auto md:text-base"
                 >
                   Открыть сайт →
                 </a>
