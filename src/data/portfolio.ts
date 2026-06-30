@@ -35,6 +35,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Большой многостраничный интернет-магазин штор и текстиля с каталогом, карточками товара и полноценной структурой разделов.",
     stack: ["E-commerce", "Каталог", "Наш дизайн"],
+    href: "https://pavlin-nsk.ru/",
     video: asset("/works/centr-shtor.mp4"),
     poster: asset("/works/posters/centr-shtor.mp4.png")
   },
