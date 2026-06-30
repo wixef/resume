@@ -29,6 +29,16 @@ export const portfolioCategories: PortfolioCategory[] = [
 
 export const portfolioItems: PortfolioItem[] = [
   {
+    id: "centr-shtor",
+    title: "Центр штор",
+    category: "Интернет-магазины",
+    description:
+      "Большой многостраничный интернет-магазин штор и текстиля с каталогом, карточками товара и полноценной структурой разделов.",
+    stack: ["E-commerce", "Каталог", "Наш дизайн"],
+    video: asset("/works/centr-shtor.mp4"),
+    poster: asset("/works/posters/centr-shtor.mp4.png")
+  },
+  {
     id: "kislorod",
     title: "KISLOROD",
     category: "Лендинги",
