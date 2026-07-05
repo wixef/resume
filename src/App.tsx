@@ -19,7 +19,7 @@ import { managementPoints, metrics } from "@/data/metrics";
 import { portfolioItems } from "@/data/portfolio";
 import { tech } from "@/data/tech";
 
-const WORDS = ["Tech Lead", "Product Owner", "Операционка", "Fullstack"];
+const WORDS = ["Tech Lead", "Product Owner", "Delivery", "Fullstack"];
 
 function scrollToId(id: string) {
   const el = document.getElementById(id);
@@ -35,7 +35,6 @@ function isGitHubPagesHost() {
 
 export default function App() {
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
   const [sending, setSending] = useState(false);
   const [toast, setToast] = useState<{ title: string; text?: string } | null>(null);
@@ -46,13 +45,6 @@ export default function App() {
   }, []);
 
   const filtered = useMemo(() => portfolioItems, []);
-
-  const pageSize = 10;
-  const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
-  const pageItems = useMemo(() => {
-    const start = (page - 1) * pageSize;
-    return filtered.slice(start, start + pageSize);
-  }, [filtered, page]);
 
   return (
     <div className="min-h-screen">
@@ -95,17 +87,17 @@ export default function App() {
 
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:mt-5 md:text-xl">
                 Веду продукты и delivery под ключ: клиенты, сроки, scope, релизы и
-                операционка.
+                поддержка.
                 <span className="text-white/45">
-                  {" "}4 года в продакшене, 100+ проектов, 52 B2B-контакта в EU.
-                  Fullstack — от интерфейса и API до платёжек, VPS и поддержки.
+                  {" "}4 года в продакшене, 100+ проектов.
+                  Fullstack — от интерфейса и API до платёжек, VPS и деплоя.
                 </span>
               </p>
 
-              <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 <div className="glass-panel rounded-[24px] px-4 py-3 md:rounded-[28px] md:px-5 md:py-4">
                   <div className="text-sm text-white/50">Специализация</div>
-                  <div className="mt-2 font-display text-xl text-white/90 md:text-3xl">
+                  <div className="mt-2 min-h-[2.5rem] font-display text-lg text-white/90 md:min-h-[3rem] md:text-2xl">
                     <TypedText words={WORDS} />
                   </div>
                 </div>
@@ -118,16 +110,9 @@ export default function App() {
                 </div>
 
                 <div className="glass-panel rounded-[24px] px-4 py-3 md:rounded-[28px] md:px-5 md:py-4">
-                  <div className="text-sm text-white/50">B2B EU</div>
+                  <div className="text-sm text-white/50">Опыт</div>
                   <div className="mt-2 font-display text-xl text-white/90 md:text-3xl">
-                    <Counter to={52} />
-                  </div>
-                </div>
-
-                <div className="glass-panel rounded-[24px] px-4 py-3 md:rounded-[28px] md:px-5 md:py-4">
-                  <div className="text-sm text-white/50">SLA лендинга</div>
-                  <div className="mt-2 font-display text-xl text-white/90 md:text-3xl">
-                    48–72ч
+                    <Counter to={4} suffix=" года" />
                   </div>
                 </div>
               </div>
@@ -197,7 +182,7 @@ export default function App() {
         <Section
           id="metrics"
           title="Метрики & управление"
-          subtitle="Цифры, за которыми — клиенты, сроки, scope и операционка. Не только пишу код, а веду результат."
+          subtitle="Цифры, за которыми — клиенты, сроки, scope и результат. Не только пишу код, а веду delivery."
           variant="section-metrics"
         >
           <MetricsGrid items={metrics} />
@@ -229,9 +214,9 @@ export default function App() {
                 </div>
                 <ul className="mt-4 grid gap-3 text-lg text-white/70">
                   <li>OSK Studio: клиенты, сметы, приёмка, пострелизная поддержка</li>
-                  <li>Scope и сроки: фикс за задачу, SLA 48–72ч на типовой лендинг</li>
-                  <li>52 B2B-контакта EU — white-label, NDA, без контакта с end-client</li>
-                  <li>Приоритеты, релизы, коммуникация — без лишних созвонов</li>
+                  <li>Scope и сроки: фикс за задачу, приоритеты без лишних созвонов</li>
+                  <li>White-label для студий EU — NDA, без контакта с end-client</li>
+                  <li>Коммуникация с клиентом — от брифа до приёмки</li>
                 </ul>
               </div>
             </div>
@@ -255,7 +240,7 @@ export default function App() {
               <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-neonPink/8 blur-2xl" />
               <div className="relative">
                 <div className="font-display text-2xl font-semibold text-white/90 md:text-3xl">
-                  Инфра & операционка
+                  Инфра & серверы
                 </div>
                 <ul className="mt-4 grid gap-3 text-lg text-white/70">
                   <li>Платёжки: Robokassa, ЮKassa, webhooks, автовыдача доступа</li>
@@ -286,18 +271,14 @@ export default function App() {
           variant="section-portfolio"
         >
           <div className="grid gap-6">
-            {pageItems.map((it, itemIndex) => {
-              const absoluteIndex = (page - 1) * pageSize + itemIndex;
-
-              return (
-                <PortfolioCard
-                  key={it.id}
-                  item={it}
-                  index={absoluteIndex}
-                  onOpen={() => setViewerIndex(absoluteIndex)}
-                />
-              );
-            })}
+            {filtered.map((it, itemIndex) => (
+              <PortfolioCard
+                key={it.id}
+                item={it}
+                index={itemIndex}
+                onOpen={() => setViewerIndex(itemIndex)}
+              />
+            ))}
           </div>
 
           <PortfolioViewer
@@ -306,36 +287,6 @@ export default function App() {
             onClose={() => setViewerIndex(null)}
             onChange={setViewerIndex}
           />
-
-          {pages > 1 ? (
-            <div className="mt-8 flex flex-col gap-4 md:flex-row md:flex-wrap md:items-center md:justify-between">
-              <div className="text-sm text-white/55 md:text-base">
-                Показано: <span className="text-white/80">{pageItems.length}</span>{" "}
-                из <span className="text-white/80">{filtered.length}</span>
-              </div>
-              <div className="flex items-center gap-2 self-start md:self-auto">
-                <button
-                  type="button"
-                  onClick={() => setPage((p) => Math.max(1, p - 1))}
-                  disabled={page <= 1}
-                  className="glass-pill rounded-3xl px-5 py-3 text-base text-white/75 transition enabled:hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
-                >
-                  ←
-                </button>
-                <div className="glass-panel rounded-3xl px-5 py-3 text-base text-white/75">
-                  {page} / {pages}
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setPage((p) => Math.min(pages, p + 1))}
-                  disabled={page >= pages}
-                  className="glass-pill rounded-3xl px-5 py-3 text-base text-white/75 transition enabled:hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
-                >
-                  →
-                </button>
-              </div>
-            </div>
-          ) : null}
         </Section>
 
         {/* PET */}
@@ -359,8 +310,8 @@ export default function App() {
               и приёмку без посредников. Параллельно строю продукты: Telegram-сервис
               подписки, HR CRM на Django, автоматизацию на Playwright, LLM-инструменты.
               Fullstack end-to-end: интерфейс, backend, PostgreSQL, платёжки, VPS, деплой
-              и поддержка. 100+ проектов, 52 B2B-контакта в EU white-label, SLA 48–72ч
-              на лендинг. Ищу удалёнку, где ценят ownership: от задачи до метрики в проде.
+              и поддержка. 100+ проектов за 4 года. Ищу удалёнку, где ценят ownership:
+              от задачи до результата в проде.
             </div>
           </div>
         </Section>

@@ -44,7 +44,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "OSK Studio",
     category: "Продукты",
     description:
-      "Основатель веб-студии: клиенты, сметы, сроки, приёмка. 52 B2B-контакта в EU white-label. Delivery под ключ — от брифа до поддержки.",
+      "Основатель веб-студии: клиенты, сметы, сроки, приёмка. White-label React/Next для EU. Delivery под ключ — от брифа до поддержки.",
     stack: ["React", "Next.js", "Delivery", "B2B"],
     href: "https://osk-studio.com"
   },
