@@ -19,7 +19,7 @@ import { managementPoints, metrics } from "@/data/metrics";
 import { portfolioItems } from "@/data/portfolio";
 import { tech } from "@/data/tech";
 
-const WORDS = ["Tech Lead", "Product Owner", "Delivery", "Fullstack"];
+const WORDS = ["Tech Lead", "Product Owner", "Операционка", "Fullstack"];
 
 function scrollToId(id: string) {
   const el = document.getElementById(id);
@@ -97,7 +97,7 @@ export default function App() {
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 <div className="glass-panel rounded-[24px] px-4 py-3 md:rounded-[28px] md:px-5 md:py-4">
                   <div className="text-sm text-white/50">Специализация</div>
-                  <div className="mt-2 min-h-[2.5rem] font-display text-lg text-white/90 md:min-h-[3rem] md:text-2xl">
+                  <div className="mt-2 min-h-[2.5rem] font-display text-base tracking-tight text-white/90 md:min-h-[3rem] md:text-xl">
                     <TypedText words={WORDS} />
                   </div>
                 </div>
