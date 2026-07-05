@@ -12,12 +12,14 @@ import TechGrid from "@/components/TechGrid";
 import PortfolioCard from "@/components/PortfolioCard";
 import PortfolioViewer from "@/components/PortfolioViewer";
 import BotChatDemo from "@/components/BotChatDemo";
+import MetricsGrid from "@/components/MetricsGrid";
 import Toast from "@/components/Toast";
 import { config } from "@/config";
+import { managementPoints, metrics } from "@/data/metrics";
 import { portfolioItems } from "@/data/portfolio";
 import { tech } from "@/data/tech";
 
-const WORDS = ["Frontend", "Backend", "Интерфейсы", "Telegram-боты"];
+const WORDS = ["Tech Lead", "Product Owner", "Операционка", "Fullstack"];
 
 function scrollToId(id: string) {
   const el = document.getElementById(id);
@@ -77,30 +79,30 @@ export default function App() {
             >
               <div className="glass-pill inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm text-white/70">
                 <span className="h-2.5 w-2.5 rounded-full bg-neonCyan shadow-[0_0_20px_rgba(0,243,255,0.75)]" />
-                <span className="font-display tracking-wide">Открыт к предложениям</span>
+                <span className="font-display tracking-wide">Основатель OSK Studio</span>
                 <span className="text-white/35">/</span>
-                <span className="text-white/55">2026</span>
+                <span className="text-white/55">удалёнка</span>
               </div>
 
               <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight text-white md:mt-7 md:text-7xl">
                 <span
                   className="glitch glitch-static"
-                  data-text="Олег. Frontend / backend разработчик."
+                  data-text="Олег. Основатель · Tech Lead."
                 >
-                  Олег. Frontend / backend разработчик.
+                  Олег. Основатель · Tech Lead.
                 </span>
               </h1>
 
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:mt-5 md:text-xl">
-                Разрабатываю сайты, интерфейсы, административные панели,
-                Telegram-ботов и backend-часть для веб-проектов.
+                Веду продукты и delivery под ключ: клиенты, сроки, scope, релизы и
+                операционка.
                 <span className="text-white/45">
-                  {" "}4 года практики, коммерческие и личные проекты, работа от
-                  интерфейса до запуска.
+                  {" "}4 года в продакшене, 100+ проектов, 52 B2B-контакта в EU.
+                  Fullstack — от интерфейса и API до платёжек, VPS и поддержки.
                 </span>
               </p>
 
-              <div className="mt-5 grid gap-3 sm:flex sm:flex-wrap sm:items-center sm:gap-4">
+              <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 <div className="glass-panel rounded-[24px] px-4 py-3 md:rounded-[28px] md:px-5 md:py-4">
                   <div className="text-sm text-white/50">Специализация</div>
                   <div className="mt-2 font-display text-xl text-white/90 md:text-3xl">
@@ -109,9 +111,23 @@ export default function App() {
                 </div>
 
                 <div className="glass-panel rounded-[24px] px-4 py-3 md:rounded-[28px] md:px-5 md:py-4">
-                  <div className="text-sm text-white/50">Опыт</div>
+                  <div className="text-sm text-white/50">Проектов</div>
                   <div className="mt-2 font-display text-xl text-white/90 md:text-3xl">
-                    <Counter to={4} suffix=" года" />
+                    <Counter to={100} suffix="+" />
+                  </div>
+                </div>
+
+                <div className="glass-panel rounded-[24px] px-4 py-3 md:rounded-[28px] md:px-5 md:py-4">
+                  <div className="text-sm text-white/50">B2B EU</div>
+                  <div className="mt-2 font-display text-xl text-white/90 md:text-3xl">
+                    <Counter to={52} />
+                  </div>
+                </div>
+
+                <div className="glass-panel rounded-[24px] px-4 py-3 md:rounded-[28px] md:px-5 md:py-4">
+                  <div className="text-sm text-white/50">SLA лендинга</div>
+                  <div className="mt-2 font-display text-xl text-white/90 md:text-3xl">
+                    48–72ч
                   </div>
                 </div>
               </div>
@@ -132,6 +148,14 @@ export default function App() {
                 >
                   Telegram
                 </a>
+                <a
+                  href={config.links.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="glass-pill rounded-3xl px-6 py-3.5 text-base text-white/85 transition hover:bg-white/10"
+                >
+                  GitHub
+                </a>
                 <button
                   type="button"
                   onClick={() => scrollToId("contacts")}
@@ -143,13 +167,13 @@ export default function App() {
 
               <div className="mt-6 max-w-xl text-base leading-relaxed text-white/70 md:text-xl">
                 <div className="flex flex-wrap gap-x-6 gap-y-2">
-                  <span className="text-white/85">Сайты</span>
+                  <span className="text-white/85">Delivery E2E</span>
                   <span className="text-white/35">/</span>
-                  <span className="text-white/85">Интернет‑магазины</span>
+                  <span className="text-white/85">B2B white-label</span>
                   <span className="text-white/35">/</span>
-                  <span className="text-white/85">Админ‑панели</span>
+                  <span className="text-white/85">Продукты & CRM</span>
                   <span className="text-white/35">/</span>
-                  <span className="text-white/85">Telegram‑боты</span>
+                  <span className="text-white/85">Инфра & платёжки</span>
                 </div>
               </div>
             </motion.div>
@@ -169,40 +193,75 @@ export default function App() {
           </div>
         </section>
 
+        {/* METRICS */}
+        <Section
+          id="metrics"
+          title="Метрики & управление"
+          subtitle="Цифры, за которыми — клиенты, сроки, scope и операционка. Не только пишу код, а веду результат."
+          variant="section-metrics"
+        >
+          <MetricsGrid items={metrics} />
+          <div className="mt-6 grid gap-3 md:mt-8 md:grid-cols-2 md:gap-4">
+            {managementPoints.map((point) => (
+              <div
+                key={point}
+                className="glass-panel rounded-[24px] px-5 py-4 text-sm leading-relaxed text-white/72 md:rounded-[28px] md:px-6 md:py-5 md:text-lg"
+              >
+                {point}
+              </div>
+            ))}
+          </div>
+        </Section>
+
         {/* WHAT I DO */}
         <Section
           id="do"
           title="Направления"
-          subtitle="Основная специализация — разработка сайтов и интерфейсов. Дополнительно беру backend, интеграции, SEO и техническую настройку проекта."
+          subtitle="Три слоя: управление и delivery, продуктовая разработка, инфраструктура и интеграции."
           variant="section-do"
         >
-          <div className="grid gap-5 lg:grid-cols-2">
+          <div className="grid gap-5 lg:grid-cols-3">
             <div className="glass-panel relative rounded-[32px] p-8 transition hover:shadow-neon">
-              <div className="pointer-events-none absolute -left-24 -top-24 h-56 w-56 rounded-full bg-neonCyan/8 blur-2xl" />
+              <div className="pointer-events-none absolute -left-24 -top-24 h-56 w-56 rounded-full bg-neonPink/8 blur-2xl" />
               <div className="relative">
                 <div className="font-display text-2xl font-semibold text-white/90 md:text-3xl">
-                  Сайты
+                  Управление & delivery
                 </div>
                 <ul className="mt-4 grid gap-3 text-lg text-white/70">
-                  <li>Лендинги, многостраничные сайты, интернет-магазины, админ-панели</li>
-                  <li>Верстка по макету, доработка существующих проектов, UI-правки</li>
-                  <li>Адаптивная верстка, анимации, работа с типографикой и структурой страниц</li>
-                  <li>Интеграции с формами, CRM, аналитикой, REST API и базами данных</li>
+                  <li>OSK Studio: клиенты, сметы, приёмка, пострелизная поддержка</li>
+                  <li>Scope и сроки: фикс за задачу, SLA 48–72ч на типовой лендинг</li>
+                  <li>52 B2B-контакта EU — white-label, NDA, без контакта с end-client</li>
+                  <li>Приоритеты, релизы, коммуникация — без лишних созвонов</li>
                 </ul>
               </div>
             </div>
 
             <div className="glass-panel relative rounded-[32px] p-8 transition hover:shadow-neon">
+              <div className="pointer-events-none absolute -left-24 -top-24 h-56 w-56 rounded-full bg-neonCyan/8 blur-2xl" />
+              <div className="relative">
+                <div className="font-display text-2xl font-semibold text-white/90 md:text-3xl">
+                  Продукт & разработка
+                </div>
+                <ul className="mt-4 grid gap-3 text-lg text-white/70">
+                  <li>Лендинги, магазины, CRM — React, Next.js, Django, FastAPI</li>
+                  <li>Pet-проект: Telegram-сервис подписки с автопровижинингом</li>
+                  <li>HR CRM: воронка кандидатов, аналитика, hh.ru API</li>
+                  <li>Playwright, LLM-инструменты, AI в ежедневном delivery</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="glass-panel relative rounded-[32px] p-8 transition hover:shadow-neon lg:col-span-1">
               <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-neonPink/8 blur-2xl" />
               <div className="relative">
                 <div className="font-display text-2xl font-semibold text-white/90 md:text-3xl">
-                  Backend и техническая часть
+                  Инфра & операционка
                 </div>
                 <ul className="mt-4 grid gap-3 text-lg text-white/70">
-                  <li>Backend на Node.js, REST API, формы, платежные и сторонние интеграции</li>
-                  <li>Telegram-боты с автоматизацией сценариев и управлением из чата</li>
-                  <li>Базовая SEO-настройка, аналитика, индексация и техническая подготовка сайта</li>
-                  <li>Серверы, деплой, Linux, Docker, VPS и Nginx</li>
+                  <li>Платёжки: Robokassa, ЮKassa, webhooks, автовыдача доступа</li>
+                  <li>VPS, Docker, nginx, healthcheck, мониторинг инцидентов</li>
+                  <li>PostgreSQL, миграции, продакшн-данные, REST API</li>
+                  <li>Деплой, поддержка, техдолг — закрываю сам, без перекладывания</li>
                 </ul>
               </div>
             </div>
@@ -213,7 +272,7 @@ export default function App() {
         <Section
           id="tech"
           title="Технологии"
-          subtitle="Стек, с которым я работаю на реальных проектах: frontend, backend, интеграции, серверы и деплой."
+          subtitle="Стек на реальных проектах — и инструменты, через которые держу сроки и качество поставки."
           variant="section-tech"
         >
           <TechGrid items={tech} />
@@ -223,7 +282,7 @@ export default function App() {
         <Section
           id="portfolio"
           title="Портфолио"
-          subtitle="Выборка реализованных проектов по сайтам, интерфейсам и сервисам."
+          subtitle="Кейсы с цифрами за спиной: продукты, студия, CRM и коммерческие сайты."
           variant="section-portfolio"
         >
           <div className="grid gap-6">
@@ -283,7 +342,7 @@ export default function App() {
         <Section
           id="pet"
           title="Telegram‑бот"
-          subtitle="Пример проекта с автоматизацией сценариев, оплатой и выдачей доступа."
+          subtitle="Демо сценария подписки: пробный доступ, оплата, выдача конфига — как в рабочем pet-проекте."
           variant="section-pet"
         >
           <BotChatDemo />
@@ -296,14 +355,12 @@ export default function App() {
             <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-neonPink/10 blur-2xl" />
 
             <div className="relative max-w-3xl text-lg leading-relaxed text-white/75 md:text-xl">
-              Мне 18 лет, во frontend-разработке 4 года. Основная
-              специализация — сайты и интерфейсы: лендинги, интернет‑магазины,
-              административные панели. Также беру backend‑часть, Telegram‑ботов
-              и серверную настройку (VPS, 3x‑ui, Linux). Большую часть задач
-              веду самостоятельно: от структуры и интерфейса до запуска и
-              технической поддержки. Сейчас ищу стабильную работу в команде,
-              где смогу расти как разработчик и брать ответственность за
-              результат.
+              4 года в продакшене. Основатель OSK Studio — веду клиентов, сметы, сроки
+              и приёмку без посредников. Параллельно строю продукты: Telegram-сервис
+              подписки, HR CRM на Django, автоматизацию на Playwright, LLM-инструменты.
+              Fullstack end-to-end: интерфейс, backend, PostgreSQL, платёжки, VPS, деплой
+              и поддержка. 100+ проектов, 52 B2B-контакта в EU white-label, SLA 48–72ч
+              на лендинг. Ищу удалёнку, где ценят ownership: от задачи до метрики в проде.
             </div>
           </div>
         </Section>
@@ -324,6 +381,13 @@ export default function App() {
                   action: "Открыть",
                   href: config.links.telegram,
                   accent: "cyan"
+                },
+                {
+                  title: "GitHub",
+                  value: "github.com/wixef",
+                  action: "Открыть",
+                  href: config.links.github,
+                  accent: "pink"
                 },
                 {
                   title: "Email",

@@ -115,7 +115,19 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
                 </div>
               )}
             </button>
-          ) : null}
+          ) : (
+            <div className="glass-soft relative flex h-full w-full max-w-full overflow-hidden rounded-[28px] border border-white/10">
+              <div className="flex aspect-[16/10] h-full min-h-[13rem] w-full flex-col justify-between bg-[radial-gradient(circle_at_top,rgba(0,243,255,0.14),transparent_42%),linear-gradient(180deg,#101924_0%,#070b10_100%)] p-4 md:min-h-[18rem] md:p-6 xl:min-h-[31rem]">
+                <span className="glass-pill inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5 text-xs text-white/85 md:px-4 md:py-2 md:text-sm">
+                  <span className="h-2.5 w-2.5 rounded-full bg-neonPink shadow-[0_0_16px_rgba(255,0,229,0.75)]" />
+                  {item.category}
+                </span>
+                <div className="font-display text-2xl font-semibold text-white/92 md:text-5xl">
+                  {item.title}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         <div
@@ -144,9 +156,11 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
           <p className="mt-3 max-w-2xl break-words text-[15px] leading-relaxed text-white/74 md:mt-5 md:text-2xl">
             {item.description}
           </p>
-          <div className="mt-3 text-xs font-medium tracking-wide text-neonCyan/85 md:text-base">
-            Дизайн сайта выполнен мной.
-          </div>
+          {item.stack.includes("Наш дизайн") ? (
+            <div className="mt-3 text-xs font-medium tracking-wide text-neonCyan/85 md:text-base">
+              Дизайн сайта выполнен мной.
+            </div>
+          ) : null}
           <div className="mt-4 flex flex-wrap gap-2">
             {item.stack.slice(0, 4).map((s) => (
               <span
@@ -161,13 +175,15 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
           <div className="mt-5 flex flex-col gap-3 md:mt-8 md:flex-row md:flex-wrap md:items-center md:justify-between">
             <div className="hidden text-sm text-white/45 md:block md:text-base">{subtitle}</div>
             <div className="grid min-w-0 grid-cols-1 gap-3 sm:flex sm:flex-wrap">
-              <button
-                type="button"
-                onClick={onOpen}
-                className="glass-pill w-full rounded-3xl px-5 py-3 text-sm text-white/85 transition hover:bg-white/10 sm:w-auto md:text-base"
-              >
-                Смотреть
-              </button>
+              {item.video ? (
+                <button
+                  type="button"
+                  onClick={onOpen}
+                  className="glass-pill w-full rounded-3xl px-5 py-3 text-sm text-white/85 transition hover:bg-white/10 sm:w-auto md:text-base"
+                >
+                  Смотреть
+                </button>
+              ) : null}
               {item.href ? (
                 <a
                   href={item.href}
@@ -175,7 +191,7 @@ export default function PortfolioCard({ item, index, onOpen }: Props) {
                   rel="noreferrer"
                   className="glass-pill w-full rounded-3xl px-5 py-3 text-center text-sm text-neonCyan transition hover:bg-white/10 hover:text-white/92 sm:w-auto md:text-base"
                 >
-                  Открыть сайт →
+                  {item.href.includes("t.me") ? "Открыть бота →" : "Открыть сайт →"}
                 </a>
               ) : null}
             </div>

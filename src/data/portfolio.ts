@@ -1,9 +1,10 @@
 export type PortfolioCategory =
   | "Все"
+  | "Продукты"
   | "Лендинги"
-  | "Интернет-магазины"
-  | "Админ-панели"
-  | "Telegram-боты";
+  | "Интернет‑магазины"
+  | "Админ‑панели"
+  | "Telegram‑боты";
 
 export type PortfolioItem = {
   id: string;
@@ -21,17 +22,60 @@ const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+
 
 export const portfolioCategories: PortfolioCategory[] = [
   "Все",
+  "Продукты",
   "Лендинги",
-  "Интернет-магазины",
-  "Админ-панели",
-  "Telegram-боты"
+  "Интернет‑магазины",
+  "Админ‑панели",
+  "Telegram‑боты"
 ];
 
 export const portfolioItems: PortfolioItem[] = [
   {
+    id: "subscription-service",
+    title: "Telegram-сервис подписки",
+    category: "Продукты",
+    description:
+      "Pet-проект: бот с подпиской и автовыдачей доступа. Python/FastAPI, PostgreSQL, webhooks оплаты, провижининг на нескольких VPS, Docker, nginx, healthcheck.",
+    stack: ["Python", "FastAPI", "PostgreSQL", "Docker", "Telegram Bot API"],
+    href: "https://t.me/mogged_vpn_bot"
+  },
+  {
+    id: "osk-studio",
+    title: "OSK Studio",
+    category: "Продукты",
+    description:
+      "Основатель веб-студии: клиенты, сметы, сроки, приёмка. 52 B2B-контакта в EU white-label. Delivery под ключ — от брифа до поддержки.",
+    stack: ["React", "Next.js", "Delivery", "B2B"],
+    href: "https://osk-studio.com"
+  },
+  {
+    id: "hr-crm",
+    title: "HR CRM / Recruiting",
+    category: "Админ‑панели",
+    description:
+      "Крупная админ-панель для набора на работу на Django: воронка кандидатов, статистика по фото, парсинг и интеграция API hh.ru, REST, PostgreSQL.",
+    stack: ["Python", "Django", "PostgreSQL", "hh.ru"]
+  },
+  {
+    id: "llm-assistant",
+    title: "LLM Real-time Assistant",
+    category: "Продукты",
+    description:
+      "Десктоп-приложение с контекстом экрана и звука ПК: локальный деплой, стриминг в LLM API, ответы в реальном времени.",
+    stack: ["Python", "LLM API", "Desktop", "Real-time"]
+  },
+  {
+    id: "tiktok-publisher",
+    title: "TikTok Publisher",
+    category: "Продукты",
+    description:
+      "Автоматизация публикации в TikTok: Python + Playwright, загрузка видео, очередь, cookies и планировщик без ручной рутины.",
+    stack: ["Python", "Playwright", "Automation"]
+  },
+  {
     id: "centr-shtor",
     title: "Центр штор",
-    category: "Интернет-магазины",
+    category: "Интернет‑магазины",
     description:
       "Большой многостраничный интернет-магазин штор и текстиля с каталогом, карточками товара и полноценной структурой разделов.",
     stack: ["E-commerce", "Каталог", "Наш дизайн"],
@@ -75,7 +119,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: "elisheba",
     title: "ELISHEBA",
-    category: "Интернет-магазины",
+    category: "Интернет‑магазины",
     description:
       "Интернет-магазин ELISHEBA с акцентом на каталог, карточки товара и уверенную подачу на мобильных устройствах.",
     stack: ["E-commerce", "Каталог", "Mobile First"],
@@ -84,7 +128,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: "clothes-custom",
     title: "Одежда на заказ",
-    category: "Интернет-магазины",
+    category: "Интернет‑магазины",
     description:
       "Сайт для заказа одежды с онлайн-конструктором принта для футболок.",
     stack: ["Каталог", "Конструктор", "UI"],
@@ -120,15 +164,5 @@ export const portfolioItems: PortfolioItem[] = [
     stack: ["Portfolio", "Motion", "UI"],
     video: asset("/works/portfolio-site.mp4"),
     poster: asset("/works/posters/portfolio-site.mp4.png")
-  },
-  {
-    id: "students-work",
-    title: "Студенческая работа",
-    category: "Админ-панели",
-    description:
-      "Пример выполненной студенческой работы по требованиям и методическим указаниям.",
-    stack: ["UI", "Контент", "Структура"],
-    video: asset("/works/students-work.mp4"),
-    poster: asset("/works/posters/students-work.mp4.png")
   }
 ];

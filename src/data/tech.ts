@@ -6,20 +6,20 @@ export type TechItem = {
 };
 
 export const tech: TechItem[] = [
-  { name: "HTML5", accent: "cyan", short: "HTML", note: "Семантическая структура страниц" },
-  { name: "CSS3", accent: "pink", short: "{ }", note: "Адаптив, grid, flex, анимации" },
-  { name: "JavaScript", accent: "cyan", short: "JS", note: "Интерактивность и логика интерфейса" },
-  { name: "TypeScript", accent: "pink", short: "TS", note: "Типизированный и поддерживаемый код" },
-  { name: "Tailwind", accent: "cyan", short: "TW", note: "Быстрая сборка современного UI" },
-  { name: "React", accent: "pink", short: "⚛", note: "Компонентные SPA и сложные интерфейсы" },
-  { name: "Next.js", accent: "cyan", short: "N", note: "SSR, routing и production-ready frontend" },
-  { name: "Node.js", accent: "pink", short: "node", note: "Backend, API и серверная логика" },
-  { name: "Express", accent: "cyan", short: "ex", note: "Лёгкие серверы и REST-endpoints" },
-  { name: "Git", accent: "pink", short: "git", note: "Контроль версий и командная работа" },
-  { name: "VPS / 3x-ui", accent: "cyan", short: "VPS", note: "Развёртывание серверов и настройка окружения" },
-  { name: "Vite", accent: "pink", short: "⚡", note: "Быстрый dev-server и сборка" },
-  { name: "Figma", accent: "cyan", short: "F", note: "Работа по макету и UI-деталям" },
-  { name: "REST API", accent: "pink", short: "API", note: "Интеграции со сторонними сервисами" },
-  { name: "Docker", accent: "cyan", short: "dk", note: "Изоляция сервисов и деплой" },
-  { name: "Nginx", accent: "pink", short: "ngx", note: "Прокси, статика и конфиги сервера" }
+  { name: "TypeScript", accent: "pink", short: "TS", note: "Frontend, backend и типизированные API" },
+  { name: "React / Next.js", accent: "cyan", short: "⚛", note: "SPA, SSR и production UI" },
+  { name: "Node.js", accent: "pink", short: "node", note: "REST API, серверная логика, интеграции" },
+  { name: "Python", accent: "cyan", short: "py", note: "FastAPI, Django, парсинг, автоматизация" },
+  { name: "PostgreSQL", accent: "pink", short: "pg", note: "Схемы, миграции, продакшн-данные" },
+  { name: "Docker", accent: "cyan", short: "dk", note: "Контейнеры, деплой, изоляция сервисов" },
+  { name: "Linux / VPS", accent: "pink", short: "lnx", note: "Nginx, systemd, reverse proxy, мониторинг" },
+  { name: "Telegram Bot API", accent: "cyan", short: "TG", note: "Боты, оплата, выдача доступа" },
+  { name: "REST / Webhooks", accent: "pink", short: "API", note: "Платёжки, hh.ru, внешние сервисы" },
+  { name: "Playwright", accent: "cyan", short: "pw", note: "Браузерная автоматизация и парсинг" },
+  { name: "AI / LLM", accent: "pink", short: "AI", note: "Cursor, Claude, интеграции в продукты" },
+  { name: "Git", accent: "cyan", short: "git", note: "Версионирование и командная работа" },
+  { name: "Tailwind CSS", accent: "pink", short: "TW", note: "Адаптивный UI и быстрая вёрстка" },
+  { name: "Figma", accent: "cyan", short: "F", note: "Вёрстка по макету и UI-детали" },
+  { name: "Django", accent: "pink", short: "dj", note: "CRM, админки, ORM, бизнес-логика" },
+  { name: "FastAPI", accent: "cyan", short: "fa", note: "Провижининг, webhooks, async API" }
 ];

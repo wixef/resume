@@ -7,6 +7,7 @@ type NavItem = { id: string; label: string };
 
 const items: NavItem[] = [
   { id: "hero", label: "Главная" },
+  { id: "metrics", label: "Метрики" },
   { id: "do", label: "Направления" },
   { id: "tech", label: "Технологии" },
   { id: "portfolio", label: "Портфолио" },
@@ -68,7 +69,7 @@ export default function NavBar() {
             <span className="block truncate font-display text-sm font-semibold text-white/90">
               {config.person.name}
             </span>
-            <span className="block truncate text-xs text-white/55">frontend</span>
+            <span className="block truncate text-xs text-white/55">tech lead</span>
           </span>
         </button>
 

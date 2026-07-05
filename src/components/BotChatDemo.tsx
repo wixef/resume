@@ -260,7 +260,7 @@ export default function BotChatDemo() {
             <li>Node.js + Telegram Bot API</li>
             <li>Автоматизация сценариев и статусов</li>
             <li>Подключение оплаты и выдача доступа без ручных действий</li>
-            <li>Серверная часть и развёртывание: VPS, 3x-ui, Linux / Docker</li>
+            <li>Серверная часть и развёртывание: VPS, Linux, Docker, nginx</li>
           </ul>
         </div>
       </div>
@@ -276,12 +276,12 @@ export default function BotChatDemo() {
                   OA
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-white/92">OSK Access</div>
-                  <div className="text-[11px] text-white/45">online</div>
+                  <div className="text-sm font-semibold text-white/92">Подписка · demo</div>
+                  <div className="text-[11px] text-white/45">Telegram-бот</div>
                 </div>
               </div>
               <a
-                href={config.links.telegramBot}
+                href={config.links.moggedVpn}
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full border border-white/10 bg-white/6 px-3 py-1.5 text-[10px] text-white/70 transition hover:bg-white/10 sm:text-[11px]"
@@ -296,10 +296,10 @@ export default function BotChatDemo() {
               <div className="flex w-full aspect-[16/9] max-h-[7rem] items-center justify-center bg-[radial-gradient(circle_at_top,rgba(78,138,255,0.28),transparent_42%),linear-gradient(180deg,#132130_0%,#070b10_100%)] sm:max-h-[8.5rem]">
                 <div className="text-center">
                   <div className="text-2xl font-black uppercase tracking-[-0.05em] text-white drop-shadow-[0_0_18px_rgba(78,138,255,0.35)] md:text-4xl">
-                    OSK ACCESS
+                    SUB DEMO
                   </div>
                   <div className="mt-1 text-xs font-semibold uppercase tracking-[0.35em] text-[#7ec8ff] md:mt-2 md:text-base">
-                    bot
+                    access
                   </div>
                 </div>
               </div>
@@ -366,7 +366,7 @@ export default function BotChatDemo() {
             <li>Backend-логика, статусы, меню и сценарии выдачи</li>
             <li>Интеграция оплаты и автоматическое подтверждение действий</li>
             <li>Управление из одного чата без лишних ручных шагов</li>
-            <li>Развёртывание на VPS, 3x-ui, Linux / Docker</li>
+            <li>Развёртывание на VPS, Linux, Docker, nginx</li>
           </ul>
         </div>
       </div>
