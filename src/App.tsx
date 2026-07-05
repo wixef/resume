@@ -5,7 +5,6 @@ import CustomCursor from "@/components/CustomCursor";
 import NeonLoader from "@/components/NeonLoader";
 import NavBar from "@/components/NavBar";
 import Section from "@/components/Section";
-import TypedText from "@/components/TypedText";
 import Counter from "@/components/Counter";
 import IconCube from "@/components/IconCube";
 import TechGrid from "@/components/TechGrid";
@@ -18,8 +17,6 @@ import { config } from "@/config";
 import { managementPoints, metrics } from "@/data/metrics";
 import { portfolioItems } from "@/data/portfolio";
 import { tech } from "@/data/tech";
-
-const WORDS = ["Tech Lead", "Product Owner", "Операционка", "Fullstack"];
 
 function scrollToId(id: string) {
   const el = document.getElementById(id);
@@ -98,7 +95,7 @@ export default function App() {
                 <div className="glass-panel rounded-[24px] px-4 py-3 md:rounded-[28px] md:px-5 md:py-4">
                   <div className="text-sm text-white/50">Специализация</div>
                   <div className="mt-2 min-h-[2.5rem] font-display text-base tracking-tight text-white/90 md:min-h-[3rem] md:text-xl">
-                    <TypedText words={WORDS} />
+                    Операционка
                   </div>
                 </div>
 
@@ -152,7 +149,7 @@ export default function App() {
 
               <div className="mt-6 max-w-xl text-base leading-relaxed text-white/70 md:text-xl">
                 <div className="flex flex-wrap gap-x-6 gap-y-2">
-                  <span className="text-white/85">Delivery E2E</span>
+                  <span className="text-white/85">Операционка</span>
                   <span className="text-white/35">/</span>
                   <span className="text-white/85">B2B white-label</span>
                   <span className="text-white/35">/</span>
