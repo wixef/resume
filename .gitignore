@@ -4,8 +4,7 @@ dist
 .env
 .env.local
 .env.*.local
-scripts/eu-outreach/.env
-scripts/eu-outreach/sent_log.json
+scripts/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
