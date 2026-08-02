@@ -166,7 +166,7 @@ async function createAppServer() {
   });
 
   server.listen(port, host, () => {
-    console.log(`Олег 18 лет — фронтенд, 100+ проектов`);
+    console.log(`Олег — фронтенд, 100+ проектов`);
     console.log(`Server started: http://${host}:${port}`);
   });
 }

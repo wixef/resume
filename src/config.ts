@@ -1,7 +1,6 @@
 export const config = {
   person: {
     name: "Олег",
-    age: 18,
     title: "Основатель · Tech Lead · Fullstack"
   },
   links: {
